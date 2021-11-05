@@ -225,6 +225,7 @@ _ℹ️ **INFO:** Setting up CentOS is quite complex. Therefore, you don’t hav
 set up KDump. However, SELinux must be running at startup and its
 configuration has to be adapted for the project’s needs. **AppArmor**
 for Debian must be running at startup too._
+
 ### What is AppArmor?
 >[AppArmor](https://debian-handbook.info/browse/stable/sect.apparmor.html) is a Mandatory Access Control (MAC) system built on Linux's LSM (Linux Security Modules) interface. In practice, the kernel queries AppArmor before each system call to know whether the process is authorized to do the given operation. Through this mechanism, AppArmor confines programs to a limited set of resources.
 
@@ -234,10 +235,31 @@ for Debian must be running at startup too._
 
 >AppArmor support is built into the standard kernels provided by Debian. Enabling AppArmor is thus just a matter of installing some packages by executing apt install apparmor apparmor-profiles apparmor-utils with root privileges.
 
->
 ### What is Mandatory Access Control?
 >In computer security, [mandatory access control](https://en.wikipedia.org/wiki/Mandatory_access_control) (MAC) refers to a type of access control by which the operating system or database constrains the ability of a subject or initiator to access or generally perform some sort of operation on an object or target. In the case of operating systems, a subject is usually a process or thread; objects are constructs such as files, directories, TCP/UDP ports, shared memory segments, IO devices, etc. Subjects and objects each have a set of security attributes. Whenever a subject attempts to access an object, an authorization rule enforced by the operating system kernel examines these security attributes and decides whether the access can take place. Any operation by any subject on any object is tested against the set of authorization rules (aka policy) to determine if the operation is allowed
+
 ### How to check if AppArmor is running?
 >The [`aa-status`](https://gitlab.com/apparmor/apparmor/-/wikis/AppArmorMonitoring#high-level-view) tool gives a high level status of AppArmor and applications it has profiles for (as root).
 
 ![image](https://user-images.githubusercontent.com/60623613/140406297-12047d36-09da-4e33-a19f-98dd45e55b34.png)
+
+_ℹ️ **INFO:** During the defense, you will be asked a few questions about the
+operating system you chose. For instance, you should know the
+differences between **aptitude and apt**, or what SELinux or **AppArmor**
+is. In short, understand what you use!_
+
+### What is APT?
+>[APT](https://www.debian.org/doc/manuals/debian-handbook/sect.apt-frontends.en.html#sect.aptitude) is a C++ program whose code mainly resides in the libapt-pkg shared library. APT is a vast project, whose original plans included a graphical interface.
+
+### What is apt?
+>apt-get is the first front end — command-line based — which was developed within the project. [apt](https://www.debian.org/doc/manuals/debian-handbook/sect.apt-get.en.html) is a second command-line based front end provided by APT which overcomes some design mistakes of apt-get. The default behavior of apt has been improved for interactive use and to actually do what most users expect. The APT developers reserve the right to change the public interface of this tool to further improve it. On the opposite, the public interface of apt-get is well defined and will not change in any backwards incompatible way. It is thus the tool that you want to use when you need to script package installation requests.
+
+### What is aptitude?
+>[aptitude](https://www.debian.org/doc/manuals/aptitude/pr01s01.en.html) is a featureful package manager for Debian GNU/Linux systems, based on the renowned apt package management infrastructure. aptitude provides the functionality of dselect and apt-get, as well as many additional features not found in either program.
+
+>[Aptitude](https://www.debian.org/doc/manuals/debian-handbook/sect.after-first-boot.en.html) is an interface to **APT** that can be used in semi-graphical mode on the console. It allows the user to browse the list of available packages according to various categories (installed or not-installed packages, by task, by section, etc.), and to view all of the information available on each of them (dependencies, conflicts, description, etc.). Each package can be marked “install” (to be installed, + key) or “remove” (to be removed, - key). All of these operations will be conducted simultaneously once you've confirmed them by pressing the g key (“g” for “go!”). If you have forgotten some programs, no worries; you will be able to run aptitude again once the initial installation has been completed.
+
+### What is a package manager?
+>A [package manager](https://www.debian.org/doc/manuals/aptitude/pr01s02.en.html) keeps track of what software is installed on your computer, and allows you to easily install new software, upgrade software to newer versions, or remove software that you previously installed. As the name suggests, package managers deal with packages: collections of files that are bundled together and can be installed and removed as a group.
+
+>When working with a package manager based on apt, such as aptitude, you will typically perform three basic tasks: you will update the list of packages that are available by downloading new lists from the Debian servers, you will select which packages should be installed, upgraded, or removed, and finally, you will commit your selections by actually performing the installations, removals, etc.
