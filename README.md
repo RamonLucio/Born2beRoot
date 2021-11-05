@@ -6,10 +6,10 @@ _This document is a **System Administration** related exercise._
 ## Introduction
 _This project aims to introduce you to the wonderful world of **virtualization**._
 
-- [x] _You will **create your first machine** in **VirtualBox** (or UTM if you can’t use VirtualBox)
+- [x] _You will **create your first machine in VirtualBox** (or UTM if you can’t use VirtualBox)
 under specific instructions. Then, at the end of this project, you will be able to set up
 your own operating system while implementing strict rules._
-### What is virtualization and what is VirtualBox?
+### What is virtualization?
 >When we describe VirtualBox as a ["virtualization"](https://www.virtualbox.org/wiki/Virtualization) product, we refer to "full virtualization", that is, the particular kind of virtualization that allows an unmodified operating system with all of its installed software to run in a special environment, on top of your existing operating system. This environment, called a "virtual machine", is created by the virtualization software by intercepting access to certain hardware components and certain features. The physical computer is then usually called the "host", while the virtual machine is often called a "guest". Most of the guest code runs unmodified, directly on the host computer, and the guest operating system "thinks" it's running on real machine.
 
 >There are several scenarios that make virtualization attractive:
