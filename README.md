@@ -76,14 +76,6 @@ file:
 >[Disk image files](https://docs.oracle.com/en/virtualization/virtualbox/6.0/user/vdidetails.html) reside on the host system and are seen by the guest systems as hard disks of a certain geometry. When a guest OS reads from or writes to a hard disk, Oracle VM VirtualBox redirects the request to the image file.
 >- **VDI.** Normally, Oracle VM VirtualBox uses its own container format for guest hard disks. This is called a Virtual Disk Image (VDI) file. This format is used when you create a new virtual machine with a new disk.
 ## Mandatory part
-_⚠️ **WARNING:** Since it is a matter of setting up a server, you will install the
-minimum of services. For this reason, a **graphical interface** is of no
-use here. It is therefore forbidden to install X.org or any other
-equivalent graphics server. Otherwise, your grade will be 0._
-### What is a graphical interface?
->The [graphical user interface](https://en.wikipedia.org/wiki/Graphical_user_interface) (GUI) 
-allows users to interact with electronic devices through graphical icons and audio indicator such as primary notation, instead of text-based user interfaces, typed command labels or text navigation.
-
 - [x] _You must choose as an operating system either the **latest stable version** of **Debian** (no
 testing/unstable), or the latest stable version of **CentOS**. Debian is highly recommended
 if you are new to system administration._
@@ -191,6 +183,36 @@ expected partitioning:_
 >This step, which doesn't require any user interaction, installs the Debian “base system” packages. This includes the dpkg and apt tools, which manage Debian packages, as well as the utilities necessary to boot the system and start using it.
 
 >![image](https://user-images.githubusercontent.com/60623613/140551477-2d7661d7-9da6-4039-b7d8-8d607adc861e.png)
+
+>If the installer detects a Debian installation disk in the CD/DVD reader, it is not necessary to configure APT to go looking for packages on the network: APT is automatically configured to read packages from a removable media drive. If the disk is part of a set, the software will offer to “explore” other disks in order to reference all of the packages stored on them.
+
+>![image](https://user-images.githubusercontent.com/60623613/140553971-832d8b2d-90f2-4216-8f53-d9e12014cf22.png)
+
+>If getting packages from the network is requested, the next two questions allow to choose a server from which to download these packages, by choosing first a country, then a mirror available in that country (a mirror is a public server hosting copies of all the files of the Debian master archive).
+
+>![image](https://user-images.githubusercontent.com/60623613/140554280-a0d7448f-3464-417f-b5c1-b7f0d2e03369.png)
+
+>![image](https://user-images.githubusercontent.com/60623613/140554322-c5cd7aea-5769-478a-9891-27b4cf21a475.png)
+
+>Finally, the program proposes to use an HTTP proxy. If there is no proxy, Internet access will be direct.
+>- An HTTP proxy is a server that forwards an HTTP request for network users. It sometimes helps to speed up downloads by keeping a copy of files that have been transferred through it (we then speak of proxy/cache). In some cases, it is the only means of accessing an external web server; in such cases it is essential to answer the corresponding question during installation for the program to be able to download the Debian packages through it.
+
+>![image](https://user-images.githubusercontent.com/60623613/140554649-e9874e98-8cf0-4e19-9fa5-21f9df40eaaf.png)
+
+>The Debian system contains a package called popularity-contest, whose purpose is to compile package usage statistics. Each week, this program collects information on the packages installed and those used recently, and anonymously sends this information to the Debian project servers. The project can then use this information to determine the relative importance of each package, which influences the priority that will be granted to them. In particular, the most “popular” packages will be included in the installation CD-ROM, which will facilitate their access for users who do not wish to download them or to purchase a complete set.
+
+>![image](https://user-images.githubusercontent.com/60623613/140555001-68b38921-6c9d-499c-897b-08de3ea2d01b.png)
+
+_⚠️ **WARNING:** Since it is a matter of setting up a server, you will install the
+minimum of services. For this reason, a **graphical interface** is of no
+use here. It is therefore forbidden to install X.org or any other
+equivalent graphics server. Otherwise, your grade will be 0._
+### What is a graphical interface?
+>The [graphical user interface](https://en.wikipedia.org/wiki/Graphical_user_interface) (GUI) 
+allows users to interact with electronic devices through graphical icons and audio indicator such as primary notation, instead of text-based user interfaces, typed command labels or text navigation.
+
+>![image](https://user-images.githubusercontent.com/60623613/140555452-ed195323-bcd3-433c-96e0-b112dfc01bf8.png)
+
 
 
 ℹ️ **INFO:** Setting up CentOS is quite complex. Therefore, you don’t have to
