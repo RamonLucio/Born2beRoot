@@ -213,6 +213,13 @@ allows users to interact with electronic devices through graphical icons and aud
 
 >![image](https://user-images.githubusercontent.com/60623613/140555452-ed195323-bcd3-433c-96e0-b112dfc01bf8.png)
 
+>The bootloader is the first program started by the BIOS. This program loads the Linux kernel into memory and then executes it. It often offers a menu that allows the user to choose the kernel to load and/or the operating system to boot.
+
+>![image](https://user-images.githubusercontent.com/60623613/140557462-c42375fe-1f87-451d-a09e-db5956b58080.png)
+
+>![image](https://user-images.githubusercontent.com/60623613/140558111-1bb737a0-ad14-4b7a-b962-69397931155c.png)
+
+>![image](https://user-images.githubusercontent.com/60623613/140559010-f62eada8-9b11-4121-bba8-cc2a9abdf5c0.png)
 
 
 ℹ️ **INFO:** Setting up CentOS is quite complex. Therefore, you don’t have to
