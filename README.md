@@ -261,5 +261,3 @@ is. In short, understand what you use!_
 
 ### What is a package manager?
 >A [package manager](https://www.debian.org/doc/manuals/aptitude/pr01s02.en.html) keeps track of what software is installed on your computer, and allows you to easily install new software, upgrade software to newer versions, or remove software that you previously installed. As the name suggests, package managers deal with packages: collections of files that are bundled together and can be installed and removed as a group.
-
->When working with a package manager based on apt, such as aptitude, you will typically perform three basic tasks: you will update the list of packages that are available by downloading new lists from the Debian servers, you will select which packages should be installed, upgraded, or removed, and finally, you will commit your selections by actually performing the installations, removals, etc.
