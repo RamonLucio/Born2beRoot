@@ -221,17 +221,20 @@ allows users to interact with electronic devices through graphical icons and aud
 
 >![image](https://user-images.githubusercontent.com/60623613/140559010-f62eada8-9b11-4121-bba8-cc2a9abdf5c0.png)
 
-
-ℹ️ **INFO:** Setting up CentOS is quite complex. Therefore, you don’t have to
+_ℹ️ **INFO:** Setting up CentOS is quite complex. Therefore, you don’t have to
 set up KDump. However, SELinux must be running at startup and its
-configuration has to be adapted for the project’s needs. AppArmor
-for Debian must be running at startup too.
+configuration has to be adapted for the project’s needs. **AppArmor**
+for Debian must be running at startup too._
 ### What is AppArmor?
 >[AppArmor](https://debian-handbook.info/browse/stable/sect.apparmor.html) is a Mandatory Access Control (MAC) system built on Linux's LSM (Linux Security Modules) interface. In practice, the kernel queries AppArmor before each system call to know whether the process is authorized to do the given operation. Through this mechanism, AppArmor confines programs to a limited set of resources.
 
 >AppArmor applies a set of rules (known as “profile”) on each program. The profile applied by the kernel depends on the installation path of the program being executed. Contrary to SELinux, the rules applied do not depend on the user. All users face the same set of rules when they are executing the same program (but traditional user permissions still apply and might result in different behavior!).
 
 >AppArmor profiles are stored in /etc/apparmor.d/ and they contain a list of access control rules on resources that each program can make use of. The profiles are compiled and loaded into the kernel by the apparmor_parser command. Each profile can be loaded either in enforcing or complaining mode. The former enforces the policy and reports violation attempts, while the latter does not enforce the policy but still logs the system calls that would have been denied.
+
+>AppArmor support is built into the standard kernels provided by Debian. Enabling AppArmor is thus just a matter of installing some packages by executing apt install apparmor apparmor-profiles apparmor-utils with root privileges.
+
+>
 ### What is Mandatory Access Control?
 >In computer security, [mandatory access control](https://en.wikipedia.org/wiki/Mandatory_access_control) (MAC) refers to a type of access control by which the operating system or database constrains the ability of a subject or initiator to access or generally perform some sort of operation on an object or target. In the case of operating systems, a subject is usually a process or thread; objects are constructs such as files, directories, TCP/UDP ports, shared memory segments, IO devices, etc. Subjects and objects each have a set of security attributes. Whenever a subject attempts to access an object, an authorization rule enforced by the operating system kernel examines these security attributes and decides whether the access can take place. Any operation by any subject on any object is tested against the set of authorization rules (aka policy) to determine if the operation is allowed
 ### How to check if AppArmor is running?
