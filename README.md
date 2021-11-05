@@ -6,7 +6,7 @@ _This document is a **System Administration** related exercise._
 ## Introduction
 _This project aims to introduce you to the wonderful world of **virtualization**._
 
-_You will **create your first machine** in **VirtualBox** (or UTM if you can’t use VirtualBox)
+- [x] _You will **create your first machine** in **VirtualBox** (or UTM if you can’t use VirtualBox)
 under specific instructions. Then, at the end of this project, you will be able to set up
 your own operating system while implementing strict rules._
 ### What is virtualization and what is VirtualBox?
@@ -42,10 +42,16 @@ your own operating system while implementing strict rules._
 
 >![image](https://user-images.githubusercontent.com/60623613/140510531-8b1b6965-c4ae-4763-9299-b767eac1b96e.png)
 
+>When a VM is started for the first time, the First Start Wizard, is displayed. This wizard helps you to select an installation medium. Since the VM is created empty, it would otherwise behave just like a real computer with no OS installed. It will do nothing and display an error message that no bootable OS was found.
+
+>![image](https://user-images.githubusercontent.com/60623613/140512001-c7fc0f10-b80c-4378-a4ba-ac75f27fd57f.png)
+
+>If you have [downloaded](https://www.debian.org/download) installation media from the Internet in the form of an ISO image file such as with a Linux distribution, you would normally burn this file to an empty CD or DVD and proceed as described above. With Oracle VM VirtualBox however, you can skip this step and mount the ISO file directly. Oracle VM VirtualBox will then present this file as a CD or DVD-ROM drive to the virtual machine, much like it does with virtual hard disk images.
+
 ## General guidelines
 _The use of VirtualBox (or UTM if you can’t use VirtualBox) is mandatory._
 
-_You only have to turn in a signature.txt file at the root of your repository. You
+- [ ] _You only have to turn in a signature.txt file at the root of your repository. You
 must paste in it the **signature** of your machine’s virtual disk._
 >To get this signature, you first have to open the default installation folder
 (it is the folder where your VMs are saved):
@@ -78,13 +84,53 @@ equivalent graphics server. Otherwise, your grade will be 0._
 >The [graphical user interface](https://en.wikipedia.org/wiki/Graphical_user_interface) (GUI) 
 allows users to interact with electronic devices through graphical icons and audio indicator such as primary notation, instead of text-based user interfaces, typed command labels or text navigation.
 
-_You must choose as an operating system either the latest stable version of **Debian** (no
+- [x] _You must choose as an operating system either the **latest stable version** of **Debian** (no
 testing/unstable), or the latest stable version of **CentOS**. Debian is highly recommended
 if you are new to system administration._
 ### Why choose Debian?
 >There are a lot of reasons to [choose Debian](https://www.debian.org/intro/why_debian) as your operating system – as a user, as a developer, and even in enterprise environments. Most users appreciate the stability, and the smooth upgrade processes of both packages and the entire distribution. Debian is also widely used by software and hardware developers because it runs on numerous architectures and devices, offers a public bug tracker and other tools for developers. If you plan to use Debian in a professional environment, there are additional benefits like LTS versions and cloud images.
 ### Why choose the latest stable version?
 >The [latest release](https://wiki.debian.org/DebianReleases) is Debian 11.1. It is also (currently) known as stable or by its codename "Bullseye".At any given time, there is one stable release of Debian, which has the support of the Debian security team. When a new stable version is released, the security team will usually cover the previous version for a year or so, while they also cover the new/current version. Only stable is recommended for production use. Stable is recommended for applications requiring production-level stability and security (servers, firewalls etc) and is also recommended for those who are new to Linux.
+
+### How to [install Debian](https://www.debian.org/doc/manuals/debian-handbook/sect.installation-steps.en.html)?
+>For a standard installation, you only need to choose “Install” or “Graphical install” (with the arrow keys), then press the Enter key to initiate the remainder of the installation process.
+
+>![image](https://user-images.githubusercontent.com/60623613/140512599-b71d5ab2-6e4f-4755-a2ce-dd422fec0315.png)
+
+>The installation program begins in English, but the first step allows the user to choose the language that will be used in the rest of the process. Choosing French, for example, will provide an installation entirely translated into French (and a system configured in French as a result). This choice is also used to define more relevant default choices in subsequent stages (notably the keyboard layout).
+
+>![image](https://user-images.githubusercontent.com/60623613/140512720-09b48988-5aa9-45c9-9a1e-eb22b1ef53be.png)
+
+>The second step consists in choosing your country. Combined with the language, this information enables the program to offer the most appropriate keyboard layout. This will also influence the configuration of the time zone. In the United States, a standard QWERTY keyboard is suggested, and a choice of appropriate time zones is offered.
+
+>![image](https://user-images.githubusercontent.com/60623613/140512827-0c3552b5-19dc-460a-bea1-a6b1c843e96d.png)
+>![image](https://user-images.githubusercontent.com/60623613/140512932-7a006e1f-1204-4dde-a952-a200ef4c9934.png)
+>![image](https://user-images.githubusercontent.com/60623613/140513021-cd99398e-0556-49c3-80a1-71f9c46a0ba5.png)
+
+- [x] _The **hostname of your virtual machine must be your login ending with 42** (e.g.,
+wil42). You will have to modify this hostname during your evaluation._
+
+>![image](https://user-images.githubusercontent.com/60623613/140513375-37de4146-4116-4f75-b2dc-a08461fc53a8.png)
+
+>[Correct domain name for a home desktop Linux machine](https://superuser.com/questions/889456/correct-domain-name-for-a-home-desktop-linux-machine)
+>![image](https://user-images.githubusercontent.com/60623613/140513550-b13b07bd-be16-4aef-a937-ec99b6798a62.png)
+
+>The super-user root account, reserved for the machine's administrator, is automatically created during installation; this is why a password is requested. The installer also asks for a confirmation of the password to prevent any input error which would later be difficult to amend. Note that you can leave both fields empty if you want the root account to be disabled. In that case, the first regular user — that will be created by the installer in the next step — will have administrative rights through sudo.
+
+>![image](https://user-images.githubusercontent.com/60623613/140513836-36af19ba-e853-4236-812b-fb521df0c52e.png)
+
+>Debian also imposes the creation of a standard user account so that the administrator doesn't get into the bad habit of working as root. The precautionary principle essentially means that each task is performed with the minimum required rights, in order to limit the damage caused by human error. This is why the installer will ask for the complete name of this first user, their username, and their password (twice, to prevent the risk of erroneous input).
+
+- [x] _In addition to the root user, a **user with your login as username** has to be present._
+
+>![image](https://user-images.githubusercontent.com/60623613/140514046-d7ad13dc-6b8f-44da-9602-58d6908df958.png)
+
+>![image](https://user-images.githubusercontent.com/60623613/140514114-520bcafe-aafb-4e26-ba8f-84244ede8151.png)
+
+>If the network is available, the system's internal clock is updated (in a one-shot way) from an NTP server. This way the timestamps on logs will be correct from the first boot. For them to remain consistently precise over time, an NTP daemon needs to be set up after initial installation.
+
+>![image](https://user-images.githubusercontent.com/60623613/140514336-a0d050e2-e5b0-444e-9190-49e19fcbf69a.png)
+
 
 ℹ️ **INFO:** Setting up CentOS is quite complex. Therefore, you don’t have to
 set up KDump. However, SELinux must be running at startup and its
