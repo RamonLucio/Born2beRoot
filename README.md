@@ -1,14 +1,14 @@
 # Born2beRoot
 ## Summary
-This document is a System Administration related exercise.
+_This document is a **System Administration** related exercise._
 ### What is a System Administrator?
 >A [system administrator](https://en.wikipedia.org/wiki/System_administrator) is a person who is responsible for the upkeep, configuration, and reliable operation of computer systems; especially multi-user computers, such as servers. The system administrator seeks to ensure that the uptime, performance, resources, and security of the computers they manage meet the needs of the users, without exceeding a set budget when doing so.
 ## Introduction
-This project aims to introduce you to the wonderful world of virtualization.
+_This project aims to introduce you to the wonderful world of **virtualization**._
 
-You will create your first machine in VirtualBox (or UTM if you can’t use VirtualBox)
+_You will create your first machine in **VirtualBox** (or UTM if you can’t use VirtualBox)
 under specific instructions. Then, at the end of this project, you will be able to set up
-your own operating system while implementing strict rules.
+your own operating system while implementing strict rules._
 ### What is virtualization and what is VirtualBox?
 >When we describe VirtualBox as a ["virtualization"](https://www.virtualbox.org/wiki/Virtualization) product, we refer to "full virtualization", that is, the particular kind of virtualization that allows an unmodified operating system with all of its installed software to run in a special environment, on top of your existing operating system. This environment, called a "virtual machine", is created by the virtualization software by intercepting access to certain hardware components and certain features. The physical computer is then usually called the "host", while the virtual machine is often called a "guest". Most of the guest code runs unmodified, directly on the host computer, and the guest operating system "thinks" it's running on real machine.
 
@@ -17,10 +17,10 @@ your own operating system while implementing strict rules.
 >- **Infrastructure consolidation.** Since the full performance of today's computers is rarely needed full-time, instead of running many such physical computers, one can "pack" many virtual machines onto a few powerful hosts and balance the loads between them. This can save a lot of hardware costs: e.g. by consolidating many servers into a few.
 >- **Testing and disaster recovery.** Especially with the use of snapshots, one can mess with a computing environment by running it as a virtual machine. If something goes wrong, one can easily switch back to a previous snapshot and avoid the need of frequent backups and restores.
 ## General guidelines
-The use of VirtualBox (or UTM if you can’t use VirtualBox) is mandatory.
+_The use of VirtualBox (or UTM if you can’t use VirtualBox) is mandatory._
 
-You only have to turn in a signature.txt file at the root of your repository. You
-must paste in it the signature of your machine’s virtual disk.
+_You only have to turn in a signature.txt file at the root of your repository. You
+must paste in it the **signature** of your machine’s virtual disk._
 >To get this signature, you first have to open the default installation folder
 (it is the folder where your VMs are saved):
 >- Windows: %HOMEDRIVE%%HOMEPATH%\VirtualBox VMs\
@@ -28,7 +28,7 @@ must paste in it the signature of your machine’s virtual disk.
 >- MacM1: ~/Library/Containers/com.utmapp.UTM/Data/Documents/
 >- MacOS: ~/VirtualBox VMs/
 
->Then, retrieve the signature from the ".vdi" file (or ".qcow2 for UTM’users) of your
+>Then, retrieve the signature from the **".vdi"** file (or ".qcow2 for UTM’users) of your
 virtual machine in sha1 format. Below are 4 command examples for a centos_serv.vdi
 file:
 >- Windows: certUtil -hashfile centos_serv.vdi sha1
@@ -44,17 +44,17 @@ file:
 >[Disk image files](https://docs.oracle.com/en/virtualization/virtualbox/6.0/user/vdidetails.html) reside on the host system and are seen by the guest systems as hard disks of a certain geometry. When a guest OS reads from or writes to a hard disk, Oracle VM VirtualBox redirects the request to the image file.
 >- **VDI.** Normally, Oracle VM VirtualBox uses its own container format for guest hard disks. This is called a Virtual Disk Image (VDI) file. This format is used when you create a new virtual machine with a new disk.
 ## Mandatory part
-⚠️ **WARNING:** Since it is a matter of setting up a server, you will install the
-minimum of services. For this reason, a graphical interface is of no
+_⚠️ **WARNING:** Since it is a matter of setting up a server, you will install the
+minimum of services. For this reason, a **graphical interface** is of no
 use here. It is therefore forbidden to install X.org or any other
-equivalent graphics server. Otherwise, your grade will be 0.
+equivalent graphics server. Otherwise, your grade will be 0._
 ### What is a graphical interface?
 >The [graphical user interface](https://en.wikipedia.org/wiki/Graphical_user_interface) (GUI) 
 allows users to interact with electronic devices through graphical icons and audio indicator such as primary notation, instead of text-based user interfaces, typed command labels or text navigation.
 
-You must choose as an operating system either the latest stable version of Debian (no
-testing/unstable), or the latest stable version of CentOS. Debian is highly recommended
-if you are new to system administration.
+_You must choose as an operating system either the latest stable version of **Debian** (no
+testing/unstable), or the latest stable version of **CentOS**. Debian is highly recommended
+if you are new to system administration._
 ### Why choose Debian?
 >There are a lot of reasons to [choose Debian](https://www.debian.org/intro/why_debian) as your operating system – as a user, as a developer, and even in enterprise environments. Most users appreciate the stability, and the smooth upgrade processes of both packages and the entire distribution. Debian is also widely used by software and hardware developers because it runs on numerous architectures and devices, offers a public bug tracker and other tools for developers. If you plan to use Debian in a professional environment, there are additional benefits like LTS versions and cloud images.
 ### Why choose the latest stable version?
