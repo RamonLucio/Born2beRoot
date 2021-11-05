@@ -138,7 +138,7 @@ expected partitioning:_
 >![image](https://user-images.githubusercontent.com/60623613/140404704-3dba0778-8f45-41c8-9cdd-757b2c1d93ec.png)
 
 ### What is partitioning?
->Partitioning, an indispensable step in installation, consists in dividing the available space on the hard drives (each subdivision thereof being called a “partition”) according to the data to be stored on it and the use for which the computer is intended. This step also includes choosing the filesystems to be used. All of these decisions will have an influence on performance, data security, and the administration of the server
+>[Partitioning](https://www.debian.org/doc/manuals/debian-handbook/sect.installation-steps.en.html#sect.install-partman), an indispensable step in installation, consists in dividing the available space on the hard drives (each subdivision thereof being called a “partition”) according to the data to be stored on it and the use for which the computer is intended. This step also includes choosing the filesystems to be used. All of these decisions will have an influence on performance, data security, and the administration of the server
 
 >The partitioning step is traditionally difficult for new users. It is necessary to define the various portions of the disks (or “partitions”) on which the Linux filesystems and virtual memory (swap) will be stored. This task is complicated if another operating system that you want to keep is already on the machine. Indeed, you will then have to make sure that you do not alter its partitions (or that you resize them without causing damage).
 
@@ -158,7 +158,7 @@ expected partitioning:_
 
 >![image](https://user-images.githubusercontent.com/60623613/140543145-0995cad5-9876-4362-b4d5-e58156ccb725.png)
 
-### What is LVM and how to use it?
+### What is LVM?
 >[LVM](https://www.debian.org/doc/manuals/debian-handbook/advanced-administration.en.html#sect.lvm) allows you to create “virtual” partitions that span over several disks. The benefits are twofold: the size of the partitions are no longer limited by individual disks but by their cumulative volume, and you can resize existing partitions at any time, possibly after adding an additional disk when needed.
 
 >LVM uses a particular terminology: a virtual partition is a “logical volume”, which is part of a “volume group”, or an association of several “physical volumes”. Each of these terms in fact corresponds to a “real” partition (or a software RAID device).
@@ -169,7 +169,7 @@ expected partitioning:_
 
 >This technique works in a very simple way: each volume, whether physical or logical, is split into blocks of the same size, which are made to correspond by LVM. The addition of a new disk will cause the creation of a new physical volume, and these new blocks can be associated to any volume group. All of the partitions in the volume group that is thus expanded will have additional space into which they can extend.
 
-### What are encrypted partitions?
+### Why use encrypted partitions?
 >To guarantee the confidentiality of your data, for instance in the event of the loss or theft of your computer or a hard drive, it is possible to encrypt the data on some partitions. This feature can be added underneath any filesystem, since, as for LVM, Linux uses the Device Mapper to create a virtual partition based on an underlying partition that will store the data in an encrypted form.
 ### Why use at least 2 encrypted partitions?
 >When an encrypted partition is used, the encryption key is stored in memory (RAM). Since retrieving this key allows the decryption of the data, it is of utmost importance to avoid leaving a copy of this key that would be accessible to the possible thief of the computer or hard drive, or to a maintenance technician. This is, however, something that can easily occur with a laptop, since when hibernating the contents of RAM is stored on the swap partition. If this partition isn't encrypted, the thief may access the key and use it to decrypt the data from the encrypted partitions. This is why, when you use encrypted partitions, it is imperative to also encrypt the swap partition!
@@ -181,6 +181,16 @@ expected partitioning:_
 >![image](https://user-images.githubusercontent.com/60623613/140543288-7f0fe6f5-ba14-46f5-8668-d139288eceb1.png)
 
 >![image](https://user-images.githubusercontent.com/60623613/140545402-287e6637-c3d4-4c33-aaba-55bef308f7b6.png)
+
+>![image](https://user-images.githubusercontent.com/60623613/140551160-1a5b92b4-8e08-443b-9f15-6c9bedeaa17a.png)
+
+>![image](https://user-images.githubusercontent.com/60623613/140551283-5a3679b1-d19a-4689-8f5f-41ce908a3f16.png)
+
+>![image](https://user-images.githubusercontent.com/60623613/140551340-3d787bf1-866a-4cf8-b1f3-f816ab060ef6.png)
+
+>This step, which doesn't require any user interaction, installs the Debian “base system” packages. This includes the dpkg and apt tools, which manage Debian packages, as well as the utilities necessary to boot the system and start using it.
+
+>![image](https://user-images.githubusercontent.com/60623613/140551477-2d7661d7-9da6-4039-b7d8-8d607adc861e.png)
 
 
 ℹ️ **INFO:** Setting up CentOS is quite complex. Therefore, you don’t have to
