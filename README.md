@@ -6,7 +6,7 @@ _This document is a **System Administration** related exercise._
 ## Introduction
 _This project aims to introduce you to the wonderful world of **virtualization**._
 
-_You will create your first machine in **VirtualBox** (or UTM if you can’t use VirtualBox)
+_You will **create your first machine** in **VirtualBox** (or UTM if you can’t use VirtualBox)
 under specific instructions. Then, at the end of this project, you will be able to set up
 your own operating system while implementing strict rules._
 ### What is virtualization and what is VirtualBox?
@@ -16,6 +16,32 @@ your own operating system while implementing strict rules._
 >- **Operating system support.** With a virtualizer such as VirtualBox, one can run software written for one operating system on another (say, Windows software on Linux) without having to reboot.
 >- **Infrastructure consolidation.** Since the full performance of today's computers is rarely needed full-time, instead of running many such physical computers, one can "pack" many virtual machines onto a few powerful hosts and balance the loads between them. This can save a lot of hardware costs: e.g. by consolidating many servers into a few.
 >- **Testing and disaster recovery.** Especially with the use of snapshots, one can mess with a computing environment by running it as a virtual machine. If something goes wrong, one can easily switch back to a previous snapshot and avoid the need of frequent backups and restores.
+
+### How to [create a virtual machine](https://www.virtualbox.org/manual/UserManual.html#gui-createvm) in VirtualBox?
+>Click New in the VirtualBox Manager window.
+
+>![image](https://user-images.githubusercontent.com/60623613/140510013-8ac8b077-a4f8-434e-9064-b417594b3776.png)
+
+>For Operating System Type, select the OS that you want to install.
+
+>![image](https://user-images.githubusercontent.com/60623613/140510188-122f1ed6-d62a-4094-b918-6dc5ed8bbbd2.png)
+
+>On the next page, select the Memory (RAM) that Oracle VM VirtualBox should allocate every time the virtual machine is started. The amount of memory given here will be taken away from your host machine and presented to the guest OS, which will report this size as the virtual computer's installed RAM.
+
+>![image](https://user-images.githubusercontent.com/60623613/140510263-cc879637-3f4b-48ac-91e3-3c74f9540d5b.png)
+
+>To create a new, empty virtual hard disk, click the Create button.
+
+>![image](https://user-images.githubusercontent.com/60623613/140510381-47666bfa-a900-4153-b3c3-d7c58f0df34e.png)
+
+>![image](https://user-images.githubusercontent.com/60623613/140510419-6263288d-86c1-4d79-ae0c-4efdf63e77b1.png)
+
+>A dynamically allocated file only grows in size when the guest actually stores data on its virtual hard disk. Therefore, this file is small initially. As the drive is filled with data, the file grows to the specified size.
+
+>![image](https://user-images.githubusercontent.com/60623613/140510510-09d70e08-135d-4b2b-9203-1dbde481f50f.png)
+
+>![image](https://user-images.githubusercontent.com/60623613/140510531-8b1b6965-c4ae-4763-9299-b767eac1b96e.png)
+
 ## General guidelines
 _The use of VirtualBox (or UTM if you can’t use VirtualBox) is mandatory._
 
