@@ -122,9 +122,9 @@ wil42). You will have to modify this hostname during your evaluation._
 
 >Debian also imposes the creation of a standard user account so that the administrator doesn't get into the bad habit of working as root. The precautionary principle essentially means that each task is performed with the minimum required rights, in order to limit the damage caused by human error. This is why the installer will ask for the complete name of this first user, their username, and their password (twice, to prevent the risk of erroneous input).
 
-- [x] _In addition to the root user, a **user with your login as username** has to be present._
-
 >![image](https://user-images.githubusercontent.com/60623613/140514046-d7ad13dc-6b8f-44da-9602-58d6908df958.png)
+
+- [x] _In addition to the root user, a **user with your login as username** has to be present._
 
 >![image](https://user-images.githubusercontent.com/60623613/140514114-520bcafe-aafb-4e26-ba8f-84244ede8151.png)
 
@@ -135,7 +135,7 @@ wil42). You will have to modify this hostname during your evaluation._
 - [x] _You must create **at least 2 encrypted partitions** using **LVM**. Below is an example of the
 expected partitioning:_
 
->[INSERT EXAMPLE HERE]
+>![image](https://user-images.githubusercontent.com/60623613/140404704-3dba0778-8f45-41c8-9cdd-757b2c1d93ec.png)
 
 ### What is partitioning?
 >Partitioning, an indispensable step in installation, consists in dividing the available space on the hard drives (each subdivision thereof being called a “partition”) according to the data to be stored on it and the use for which the computer is intended. This step also includes choosing the filesystems to be used. All of these decisions will have an influence on performance, data security, and the administration of the server
@@ -174,9 +174,14 @@ expected partitioning:_
 ### Why use at least 2 encrypted partitions?
 >When an encrypted partition is used, the encryption key is stored in memory (RAM). Since retrieving this key allows the decryption of the data, it is of utmost importance to avoid leaving a copy of this key that would be accessible to the possible thief of the computer or hard drive, or to a maintenance technician. This is, however, something that can easily occur with a laptop, since when hibernating the contents of RAM is stored on the swap partition. If this partition isn't encrypted, the thief may access the key and use it to decrypt the data from the encrypted partitions. This is why, when you use encrypted partitions, it is imperative to also encrypt the swap partition!
 
+<hr>
+
 >The software will then propose to initialize the physical volume with random data (making the localization of the real data more difficult), and will ask you to enter an “encryption passphrase”, which you will have to enter every time you boot your computer in order to access the content of the encrypted partition. Once this step has been completed, and you have returned to the partitioning tool menu, a new partition will be available in an “encrypted volume”, which you can then configure just like any other partition. In most cases, this partition is used as a physical volume for LVM so as to protect several partitions (LVM logical volumes) with the same encryption key, including the swap partition.
 
-![image](https://user-images.githubusercontent.com/60623613/140543288-7f0fe6f5-ba14-46f5-8668-d139288eceb1.png)
+>![image](https://user-images.githubusercontent.com/60623613/140543288-7f0fe6f5-ba14-46f5-8668-d139288eceb1.png)
+
+>![image](https://user-images.githubusercontent.com/60623613/140545402-287e6637-c3d4-4c33-aaba-55bef308f7b6.png)
+
 
 ℹ️ **INFO:** Setting up CentOS is quite complex. Therefore, you don’t have to
 set up KDump. However, SELinux must be running at startup and its
@@ -194,8 +199,3 @@ for Debian must be running at startup too.
 >The [`aa-status`](https://gitlab.com/apparmor/apparmor/-/wikis/AppArmorMonitoring#high-level-view) tool gives a high level status of AppArmor and applications it has profiles for (as root).
 
 ![image](https://user-images.githubusercontent.com/60623613/140406297-12047d36-09da-4e33-a19f-98dd45e55b34.png)
-
-You must create at least 2 encrypted partitions using LVM. Below is an example of the
-expected partitioning:
-
-![image](https://user-images.githubusercontent.com/60623613/140404704-3dba0778-8f45-41c8-9cdd-757b2c1d93ec.png)
