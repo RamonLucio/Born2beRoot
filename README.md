@@ -265,4 +265,4 @@ is. In short, understand what you use!_
 _A **SSH service** will be running on port 4242 only. For security reasons, it must not be
 possible to connect using SSH as root._
 
-### What is a SSH service?
+### What is SSH service?
