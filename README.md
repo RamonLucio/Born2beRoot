@@ -113,6 +113,7 @@ wil42). You will have to modify this hostname during your evaluation._
 >![image](https://user-images.githubusercontent.com/60623613/140513375-37de4146-4116-4f75-b2dc-a08461fc53a8.png)
 
 >[Correct domain name for a home desktop Linux machine](https://superuser.com/questions/889456/correct-domain-name-for-a-home-desktop-linux-machine)
+
 >![image](https://user-images.githubusercontent.com/60623613/140513550-b13b07bd-be16-4aef-a937-ec99b6798a62.png)
 
 >The super-user root account, reserved for the machine's administrator, is automatically created during installation; this is why a password is requested. The installer also asks for a confirmation of the password to prevent any input error which would later be difficult to amend. Note that you can leave both fields empty if you want the root account to be disabled. In that case, the first regular user — that will be created by the installer in the next step — will have administrative rights through sudo.
@@ -131,6 +132,51 @@ wil42). You will have to modify this hostname during your evaluation._
 
 >![image](https://user-images.githubusercontent.com/60623613/140514336-a0d050e2-e5b0-444e-9190-49e19fcbf69a.png)
 
+- [x] _You must create **at least 2 encrypted partitions** using **LVM**. Below is an example of the
+expected partitioning:_
+
+>[INSERT EXAMPLE HERE]
+
+### What is partitioning?
+>Partitioning, an indispensable step in installation, consists in dividing the available space on the hard drives (each subdivision thereof being called a “partition”) according to the data to be stored on it and the use for which the computer is intended. This step also includes choosing the filesystems to be used. All of these decisions will have an influence on performance, data security, and the administration of the server
+
+>The partitioning step is traditionally difficult for new users. It is necessary to define the various portions of the disks (or “partitions”) on which the Linux filesystems and virtual memory (swap) will be stored. This task is complicated if another operating system that you want to keep is already on the machine. Indeed, you will then have to make sure that you do not alter its partitions (or that you resize them without causing damage).
+
+>Fortunately, the partitioning software has a “guided” mode which recommends partitions for the user to make — in most cases, you can simply validate the software's suggestions.
+
+>![image](https://user-images.githubusercontent.com/60623613/140538831-062ca7b4-d87d-44da-9a9f-629438ad77d9.png)
+
+>The next screen offers to choose the disk where Linux will be installed by selecting the corresponding entry (for example, “SCSI1 (0,0,0) (sda) - 21.5 GB ATA QEMU HARDDISK”). You then start guided partitioning.
+
+>![image](https://user-images.githubusercontent.com/60623613/140539018-af120c14-c956-4f5f-aa95-1a0e8f3179cc.png)
+
+>The first method is called “All files in one partition”. The entire Linux system tree is stored in a single filesystem, corresponding to the root / directory. This simple and robust partitioning fits perfectly for personal or single-user systems. In fact, two partitions will be created: the first will house the complete system, the second the virtual memory (swap).
+
+>The second method, “Separate /home partition”, is similar, but splits the file hierarchy in two: one partition contains the Linux system (/), and the second contains “home directories” (meaning user data, in files and subdirectories available under /home/).
+
+>![image](https://user-images.githubusercontent.com/60623613/140540673-fbed1f93-ea2b-4288-aa4d-8a163b71df30.png)
+
+>![image](https://user-images.githubusercontent.com/60623613/140543145-0995cad5-9876-4362-b4d5-e58156ccb725.png)
+
+### What is LVM and how to use it?
+>[LVM](https://www.debian.org/doc/manuals/debian-handbook/advanced-administration.en.html#sect.lvm) allows you to create “virtual” partitions that span over several disks. The benefits are twofold: the size of the partitions are no longer limited by individual disks but by their cumulative volume, and you can resize existing partitions at any time, possibly after adding an additional disk when needed.
+
+>LVM uses a particular terminology: a virtual partition is a “logical volume”, which is part of a “volume group”, or an association of several “physical volumes”. Each of these terms in fact corresponds to a “real” partition (or a software RAID device).
+
+>![image](https://user-images.githubusercontent.com/60623613/140537250-7a63e5b7-eb9f-4f86-8fd4-7f2bb28f4d1a.png)
+
+>![image](https://user-images.githubusercontent.com/60623613/140537285-9f0baae5-6cf5-4c2d-a70e-79604e472fb9.png)
+
+>This technique works in a very simple way: each volume, whether physical or logical, is split into blocks of the same size, which are made to correspond by LVM. The addition of a new disk will cause the creation of a new physical volume, and these new blocks can be associated to any volume group. All of the partitions in the volume group that is thus expanded will have additional space into which they can extend.
+
+### What are encrypted partitions?
+>To guarantee the confidentiality of your data, for instance in the event of the loss or theft of your computer or a hard drive, it is possible to encrypt the data on some partitions. This feature can be added underneath any filesystem, since, as for LVM, Linux uses the Device Mapper to create a virtual partition based on an underlying partition that will store the data in an encrypted form.
+### Why use at least 2 encrypted partitions?
+>When an encrypted partition is used, the encryption key is stored in memory (RAM). Since retrieving this key allows the decryption of the data, it is of utmost importance to avoid leaving a copy of this key that would be accessible to the possible thief of the computer or hard drive, or to a maintenance technician. This is, however, something that can easily occur with a laptop, since when hibernating the contents of RAM is stored on the swap partition. If this partition isn't encrypted, the thief may access the key and use it to decrypt the data from the encrypted partitions. This is why, when you use encrypted partitions, it is imperative to also encrypt the swap partition!
+
+>The software will then propose to initialize the physical volume with random data (making the localization of the real data more difficult), and will ask you to enter an “encryption passphrase”, which you will have to enter every time you boot your computer in order to access the content of the encrypted partition. Once this step has been completed, and you have returned to the partitioning tool menu, a new partition will be available in an “encrypted volume”, which you can then configure just like any other partition. In most cases, this partition is used as a physical volume for LVM so as to protect several partitions (LVM logical volumes) with the same encryption key, including the swap partition.
+
+![image](https://user-images.githubusercontent.com/60623613/140543288-7f0fe6f5-ba14-46f5-8668-d139288eceb1.png)
 
 ℹ️ **INFO:** Setting up CentOS is quite complex. Therefore, you don’t have to
 set up KDump. However, SELinux must be running at startup and its
