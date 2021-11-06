@@ -266,3 +266,9 @@ _A **SSH service** will be running on port 4242 only. For security reasons, it m
 possible to connect using SSH as root._
 
 ### What is SSH service?
+>Secure Shell ([SSH](https://en.wikipedia.org/wiki/Secure_Shell)) is a cryptographic network protocol for operating network services securely over an unsecured network. SSH provides a secure channel over an unsecured network by using a client–server architecture, connecting an SSH client application with an SSH server. 
+
+>The SSH client drives the connection setup process and uses public key cryptography to verify the identity of the SSH server. After the setup phase the [SSH protocol](https://www.ssh.com/academy/ssh/protocol) uses strong symmetric encryption and hashing algorithms to ensure the privacy and integrity of the data that is exchanged between the client and server.
+
+>The figure below presents a simplified setup flow of a secure shell connection.
+>![image](https://user-images.githubusercontent.com/60623613/140618919-8617389f-2f37-4b9b-8ec3-64fc6c3447e9.png)
