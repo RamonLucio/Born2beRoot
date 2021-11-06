@@ -262,13 +262,24 @@ is. In short, understand what you use!_
 ### What is a package manager?
 >A [package manager](https://www.debian.org/doc/manuals/aptitude/pr01s02.en.html) keeps track of what software is installed on your computer, and allows you to easily install new software, upgrade software to newer versions, or remove software that you previously installed. As the name suggests, package managers deal with packages: collections of files that are bundled together and can be installed and removed as a group.
 
-_A **SSH service** will be running on port 4242 only. For security reasons, it must not be
+- [ ] _A **SSH service** will be running on port 4242 only. For security reasons, it must not be
 possible to connect using SSH as root._
 
-### What is SSH service?
+### What is SSH?
 >Secure Shell ([SSH](https://en.wikipedia.org/wiki/Secure_Shell)) is a cryptographic network protocol for operating network services securely over an unsecured network. SSH provides a secure channel over an unsecured network by using a client–server architecture, connecting an SSH client application with an SSH server. 
 
 >The SSH client drives the connection setup process and uses public key cryptography to verify the identity of the SSH server. After the setup phase the [SSH protocol](https://www.ssh.com/academy/ssh/protocol) uses strong symmetric encryption and hashing algorithms to ensure the privacy and integrity of the data that is exchanged between the client and server.
 
 >The figure below presents a simplified setup flow of a secure shell connection.
 >![image](https://user-images.githubusercontent.com/60623613/140618919-8617389f-2f37-4b9b-8ec3-64fc6c3447e9.png)
+
+### What is a service?
+>When you [boot](https://debian-handbook.info/browse/stable/unix-services.html#sect.system-boot) the computer, first, the BIOS takes control of the computer, detects the disks, loads the Master Boot Record, and executes the bootloader. The bootloader takes over, finds the kernel on the disk, loads and executes it. The kernel is then initialized, and starts to search for and mount the partition containing the root filesystem, and finally executes the first program — init.  Frequently, this “root partition” and this init are, in fact, located in a virtual filesystem that only exists in RAM (hence its name, “initramfs”, formerly called “initrd” for “initialization RAM disk”). This filesystem is loaded in memory by the bootloader, often from a file on a hard drive or from the network. It contains the bare minimum required by the kernel to load the “true” root filesystem: this may be driver modules for the hard drive, or other devices without which the system cannot boot, or, more frequently, initialization scripts and modules for assembling RAID arrays, opening encrypted partitions, activating LVM volumes, etc. Once the root partition is mounted, the initramfs hands over control to the real init, and the machine goes back to the standard boot process. The “real init” is currently provided by systemd.
+
+>![image](https://user-images.githubusercontent.com/60623613/140621013-0d898c30-33e7-4207-b62c-4c87d1e0db80.png)
+
+>A systemd “service file” describes a process managed by systemd. It contains roughly the same information as old-style init-scripts, but expressed in a declaratory (and much more concise) way. Systemd handles the bulk of the repetitive tasks (starting and stopping the process, checking its status, logging, dropping privileges, and so on), and the service file only needs to fill in the specifics of the process. For instance, here is the service file for SSH:
+
+>![image](https://user-images.githubusercontent.com/60623613/140621048-f9759fd1-c0d7-4f54-9d39-94f0a9145a73.png)
+
+>Since unit files are declarative rather than scripts or programs, they cannot be run directly, and they are only interpreted by systemd; several utilities therefore allow the administrator to interact with systemd and control the state of the system and of each component. The first such utility is systemctl. When run without any arguments, it lists all the unit files known to systemd (except those that have been disabled), as well as their status. systemctl status gives a better view of the services, as well as the related processes. If given the name of a service (as in systemctl status ssh.service), it returns even more details, as well as the last few log lines related to the service
