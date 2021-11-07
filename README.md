@@ -262,7 +262,7 @@ is. In short, understand what you use!_
 ### What is a package manager?
 >A [package manager](https://www.debian.org/doc/manuals/aptitude/pr01s02.en.html) keeps track of what software is installed on your computer, and allows you to easily install new software, upgrade software to newer versions, or remove software that you previously installed. As the name suggests, package managers deal with packages: collections of files that are bundled together and can be installed and removed as a group.
 
-- [ ] _A **SSH service will be running** on port 4242 only. For security reasons, it must not be
+- [ ] _A **SSH service will be running** on **port 4242** only. For security reasons, it must not be
 possible to connect using SSH as root._
 
 ### What is SSH?
@@ -285,3 +285,18 @@ possible to connect using SSH as root._
 >Since unit files are declarative rather than scripts or programs, they cannot be run directly, and they are only interpreted by systemd; several utilities therefore allow the administrator to interact with systemd and control the state of the system and of each component. The first such utility is systemctl. When run without any arguments, it lists all the unit files known to systemd (except those that have been disabled), as well as their status. `systemctl status` gives a better view of the services, as well as the related processes. If given the name of a service (as in `systemctl status ssh.service`), it returns even more details, as well as the last few log lines related to the service.
 
 >![image](https://user-images.githubusercontent.com/60623613/140622396-4c5b14cc-5311-4427-8159-dc93e6cdd8c4.png)
+
+### How to change the SSH port in the server?
+>By default, the SSH server still runs in [port 22](https://www.ssh.com/academy/ssh/port). However, there are occasions when it is run in a different port. Testing use is one reason. Running multiple configurations on the same host is another. Rarely, it may also be run without root privileges, in which case it must be run in a non-privileged port (i.e., port number >= 1024). 
+
+>The port number can be configured by changing the Port 22 directive in `/etc/ssh/sshd_config`. It can also be specified using the -p <port> option to sshd. The SSH client and sftp programs also support the -p <port> option. This for a simple reason, there is a large number of robots on the internet that scan ports 22 of all public IPs to find an SSH server to use, by [changing the default port of your SSH service](https://www.it-connect.fr/chapitres/openssh-configuration-du-serveur-ssh/), you will protect yourself from a large number of robots that automate scans and attacks.
+  
+>`apt install vim`
+>`cd etc/ssh/`
+>`vim sshd_config`
+>`type 'i'` (Switch to Insert mode)
+>Change port 22 to 4242
+>`type ':wq'` (Save and quit)
+>![image](https://user-images.githubusercontent.com/60623613/140626828-fd4eac7a-edba-4237-a082-fcf51c143670.png)
+>`cd ../..`
+>`systemctl restart sshd`
