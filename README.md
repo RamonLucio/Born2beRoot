@@ -322,8 +322,54 @@ possible to connect using SSH as root**._
 ### [How to specify whether root can log in using ssh](https://man7.org/linux/man-pages/man5/sshd_config.5.html)?
 > `vim etc/sshd/sshd_config`
   
-> Search for PermitRootLogin. Specifies whether root can log in using ssh(1).  The argument must be yes, prohibit-password, forced-commands-only, or no.  The default is prohibit-password. If this option is set to no, root is not allowed to log in.
+> Search for PermitRootLogin. It specifies whether root can log in using ssh(1).  The argument must be yes, prohibit-password, forced-commands-only, or no.  The default is prohibit-password. If this option is set to no, root is not allowed to log in.
 
 >![image](https://user-images.githubusercontent.com/60623613/140977183-dffa1d79-8d72-4502-982f-6b370b0647c2.png)
 
 > `systemctl restart sshd`
+  
+_You have to configure your operating system with the **UFW firewall** and thus leave only
+port 4242 open._
+
+### What is firewall?
+>A [firewall](https://en.wikipedia.org/wiki/Firewall_(computing)) is a network security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules. A firewall typically establishes a barrier between a trusted network and an untrusted network, such as the Internet.
+  
+### What is UFW?
+>The [Uncomplicated Firewall](https://wiki.debian.org/Uncomplicated%20Firewall%20%28ufw%29) is a frontend for iptables and is particularly well-suited for host-based firewalls. UFW provides a framework for managing netfilter, as well as a command-line interface for manipulating the firewall.
+  
+### How to configure Debian with UFW?
+> Uncomplicated Firewall can be easily installed by typing this command into the terminal as a super user:
+
+>`apt install ufw`
+  
+>![image](https://user-images.githubusercontent.com/60623613/140982199-56b3f6c4-958e-44de-a749-99b29977a49c.png)
+
+> However, simply installing the firewall will not turn it on automatically, nor it will have any rule set by default.
+  
+> ⚠️ Warning: If you are configuring over SSH, you may wish to allow SSH before enabling the firewall. If your connection gets interrupted before allowing SSH you may be locked out of your system.
+
+> Firstly, the firewall must be enabled by typing:
+
+> `ufw enable`
+  
+> ![image](https://user-images.githubusercontent.com/60623613/140982597-99f37ad8-0284-4cab-885b-dc78a1f56993.png)
+
+> Secondly, defaults must be set up. For normal users the following defaults will do just fine.
+
+> `ufw default deny incoming`
+  
+> `ufw default allow outgoing`
+  
+>![image](https://user-images.githubusercontent.com/60623613/140983592-28753217-5d49-4c9f-8aad-1c704e624088.png)
+
+> Next, it is recommended to verify that the firewall is enabled by typing:
+
+> `ufw status verbose` 
+  
+>![image](https://user-images.githubusercontent.com/60623613/140983751-a6ba5e04-9863-490e-b36f-facaa59c983b.png)
+
+> Allowing rules is quite simple from the command line, and it is sometimes necessary. For example, by default ufw denies all of the incoming connections, which will make it a problem if you are using SSH. Therefore, you must create a rule which allows SSH connections, by typing:
+  
+> `ufw allow ssh`
+  
+>![image](https://user-images.githubusercontent.com/60623613/140983873-e64c2765-458b-4b92-aaab-58c56ce4e9c9.png)
