@@ -317,7 +317,6 @@ possible to connect using SSH as root**._
 >The SSH service is a very popular service for attackers and hackers, it allows you to have direct control over the server as if you were in the same room as it. It turns out that the SSH service can be vulnerable to Brute Force attacks , which consist in testing, for a given user, a large number of passwords chosen more or less at random, betting on the fact that at the end of 'at a certain point, we will inevitably come across the right one.
   
 >The problem being that if the brute force attack is successful on the " root " account, it becomes very dangerous for the attacked server because it ends up entirely in the hands of the hacker. For security reasons, it is therefore forbidden to connect to it as root . If an attacker decides to brute force an SSH access, he must first find the name of a valid user (other than root, which is the only user present on all Linux machines in the world) and if he succeeds then to find a valid login: password combination, it will end up with a limited number of rights on the server. Which is a lesser evil.
-
   
 ### [How to specify whether root can log in using ssh](https://man7.org/linux/man-pages/man5/sshd_config.5.html)?
 > `vim etc/sshd/sshd_config`
@@ -387,5 +386,9 @@ port 4242 open._
 > This will output a numbered list of rules, and the number may be used to delete a particular rule:
 
 > `ufw delete 2`
-  
+
 > ![image](https://user-images.githubusercontent.com/60623613/140986151-82a8daeb-36e8-4a94-9d44-464c2828211f.png)
+
+ℹ️ **INFO**: _Your firewall must be active when you launch your virtual machine.
+For CentOS, you have to use UFW instead of the default firewall. To
+install it, you will probably need DNF._
