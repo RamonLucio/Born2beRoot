@@ -337,7 +337,7 @@ port 4242 open._
 ### What is UFW?
 >The [Uncomplicated Firewall](https://wiki.debian.org/Uncomplicated%20Firewall%20%28ufw%29) is a frontend for iptables and is particularly well-suited for host-based firewalls. UFW provides a framework for managing netfilter, as well as a command-line interface for manipulating the firewall.
   
-### How to configure Debian with UFW?
+### [How to configure Debian with UFW](https://wiki.debian.org/Uncomplicated%20Firewall%20%28ufw%29)?
 > Uncomplicated Firewall can be easily installed by typing this command into the terminal as a super user:
 
 >`apt install ufw`
@@ -373,3 +373,19 @@ port 4242 open._
 > `ufw allow ssh`
   
 >![image](https://user-images.githubusercontent.com/60623613/140983873-e64c2765-458b-4b92-aaab-58c56ce4e9c9.png)
+
+> Port ranges may also be specified, a simple example for tcp would be:
+
+> `ufw allow 4242/tcp`
+  
+>![image](https://user-images.githubusercontent.com/60623613/140985819-9c52531b-e19a-4c36-9201-d8650fd6eecc.png)
+
+> You may also delete rules by number. To show a numbered list of rules:
+
+> `ufw status numbered`
+
+> This will output a numbered list of rules, and the number may be used to delete a particular rule:
+
+> `ufw delete 2`
+  
+> ![image](https://user-images.githubusercontent.com/60623613/140986151-82a8daeb-36e8-4a94-9d44-464c2828211f.png)
