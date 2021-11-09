@@ -292,11 +292,19 @@ possible to connect using SSH as root._
 >The port number can be configured by changing the Port 22 directive in `/etc/ssh/sshd_config`. It can also be specified using the -p <port> option to sshd. The SSH client and sftp programs also support the -p <port> option. This for a simple reason, there is a large number of robots on the internet that scan ports 22 of all public IPs to find an SSH server to use, by [changing the default port of your SSH service](https://www.it-connect.fr/chapitres/openssh-configuration-du-serveur-ssh/), you will protect yourself from a large number of robots that automate scans and attacks.
   
 >`apt install vim`
+  
 >`cd etc/ssh/`
+  
 >`vim sshd_config`
+  
 >`type 'i'` (Switch to Insert mode)
+  
 >Change port 22 to 4242
+  
 >`type ':wq'` (Save and quit)
->![image](https://user-images.githubusercontent.com/60623613/140626828-fd4eac7a-edba-4237-a082-fcf51c143670.png)
+  
+>![image](https://user-images.githubusercontent.com/60623613/140950738-598cd9a4-b41a-4b9c-b68a-495bbb5278ea.png)
+  
 >`cd ../..`
+  
 >`systemctl restart sshd`
