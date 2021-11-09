@@ -308,3 +308,7 @@ possible to connect using SSH as root._
 >`cd ../..`
   
 >`systemctl restart sshd`
+
+`ss - tunlp`
+  
+>![image](https://user-images.githubusercontent.com/60623613/140971829-5317b061-85a4-4c85-bbf0-154536cec0d0.png)
