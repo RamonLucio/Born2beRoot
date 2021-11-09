@@ -327,7 +327,7 @@ possible to connect using SSH as root**._
 
 > `systemctl restart sshd`
   
-_You have to configure your operating system with the **UFW firewall** and thus leave only
+- [x] _You have to configure your operating system with the **UFW firewall** and thus leave only
 port 4242 open._
 
 ### What is firewall?
@@ -392,3 +392,14 @@ port 4242 open._
 ℹ️ **INFO**: _Your firewall must be active when you launch your virtual machine.
 For CentOS, you have to use UFW instead of the default firewall. To
 install it, you will probably need DNF._
+
+- [x] _The hostname of your virtual machine must be your login ending with 42 (e.g.,
+wil42). **You will have to modify this hostname during your evaluation**._
+  
+### [How to modify the machine's hostname](https://wiki.debian.org/Hostname)?
+  
+> Versions of Debian with systemd installed can use `hostnamectl set-hostname mymachine`. This tool depends on dbus so be sure to install that first.
+  
+>![image](https://user-images.githubusercontent.com/60623613/141003352-304b0997-1159-4b90-9ab3-827f963c67b2.png)
+  
+>![image](https://user-images.githubusercontent.com/60623613/141003726-e9e8957a-c6ed-49de-b42e-1c299cf6eddb.png)
