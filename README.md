@@ -262,8 +262,8 @@ is. In short, understand what you use!_
 ### What is a package manager?
 >A [package manager](https://www.debian.org/doc/manuals/aptitude/pr01s02.en.html) keeps track of what software is installed on your computer, and allows you to easily install new software, upgrade software to newer versions, or remove software that you previously installed. As the name suggests, package managers deal with packages: collections of files that are bundled together and can be installed and removed as a group.
 
-- [ ] _A **SSH service will be running** on **port 4242** only. For security reasons, it must not be
-possible to connect using SSH as root._
+- [ ] _A **SSH service will be running** on **port 4242** only. For security reasons, **it must not be
+possible to connect using SSH as root**._
 
 ### What is SSH?
 >Secure Shell ([SSH](https://en.wikipedia.org/wiki/Secure_Shell)) is a cryptographic network protocol for operating network services securely over an unsecured network. SSH provides a secure channel over an unsecured network by using a client–server architecture, connecting an SSH client application with an SSH server. 
@@ -309,6 +309,11 @@ possible to connect using SSH as root._
   
 >`systemctl restart sshd`
 
-`ss - tunlp`
+>`ss - tunlp`
   
 >![image](https://user-images.githubusercontent.com/60623613/140971829-5317b061-85a4-4c85-bbf0-154536cec0d0.png)
+
+### [Why forbid SSH connections from root by default](https://www.it-connect.fr/chapitres/openssh-configuration-du-serveur-ssh/)?
+>The SSH service is a very popular service for attackers and hackers, it allows you to have direct control over the server as if you were in the same room as it. It turns out that the SSH service can be vulnerable to Brute Force attacks , which consist in testing, for a given user, a large number of passwords chosen more or less at random, betting on the fact that at the end of 'at a certain point, we will inevitably come across the right one.
+  
+>The problem being that if the brute force attack is successful on the " root " account, it becomes very dangerous for the attacked server because it ends up entirely in the hands of the hacker. For security reasons, it is therefore forbidden to connect to it as root . If an attacker decides to brute force an SSH access, he must first find the name of a valid user (other than root, which is the only user present on all Linux machines in the world) and if he succeeds then to find a valid login: password combination, it will end up with a limited number of rights on the server. Which is a lesser evil.
