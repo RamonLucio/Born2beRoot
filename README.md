@@ -403,3 +403,19 @@ wil42). **You will have to modify this hostname during your evaluation**._
 >![image](https://user-images.githubusercontent.com/60623613/141003352-304b0997-1159-4b90-9ab3-827f963c67b2.png)
   
 >![image](https://user-images.githubusercontent.com/60623613/141003726-e9e8957a-c6ed-49de-b42e-1c299cf6eddb.png)
+
+> [The purpose](https://debian-handbook.info/browse/stable/sect.hostname-name-service.html) of assigning names to IP numbers is to make them easier for people to remember.
+In reality, an IP address identifies a network interface associated with a device such as a network
+card. Since each machine can have several network cards, and several interfaces on each card,
+one single computer can have several names in the domain name system.
+
+> Each machine is, however, identified by a main (or “canonical”) name, stored in the /etc/
+hostname file and communicated to the Linux kernel by initialization scripts through the
+hostname command. The current value is available in a virtual filesystem, and you can get it
+with the cat /proc/sys/kernel/hostname command.
+  
+-[ ] _You have to implement a strong **password policy**._
+  
+> [Linux-PAM](http://www.linux-pam.org/Linux-PAM-html/sag-introduction.html) (Pluggable Authentication Modules for Linux) is a suite of shared libraries that enable the local system administrator to choose how applications authenticate users.
+  
+> Historically an application that has required a given user to be authenticated, has had to be compiled to use a specific authentication mechanism. For example, in the case of traditional UN*X systems, the identity of the user is verified by the user entering a correct password. This password, after being prefixed by a two character ``salt'', is encrypted (with crypt(3)). The user is then authenticated if this encrypted password is identical to the second field of the user's entry in the system password database (the /etc/passwd file). On such systems, most if not all forms of privileges are granted based on this single authentication scheme. Privilege comes in the form of a personal user-identifier (UID) and membership of various groups. Services and applications are available based on the personal and group identity of the user. Traditionally, group membership has been assigned based on entries in the /etc/group file.
