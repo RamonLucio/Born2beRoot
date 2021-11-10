@@ -492,17 +492,71 @@ The drawback to this system is that the user must have the device with them when
 user wants to connect to the computer.
 
 _To set up a strong password policy, you have to comply with the following requirements:_
+  
+### [How to set up a strong password policy on Debian?](https://www.server-world.info/en/note?os=Debian_11&p=pam&f=1)
+  > Install password quality checking library.
+  
+  >![image](https://user-images.githubusercontent.com/60623613/141208607-e0031a96-37ec-40a1-889c-4ddf85d893ac.png)
 
-  - [ ] _Your password has to expire every 30 days._
+  - [x] _Your password has to expire every 30 days._
+    
+    > Set number of days for password Expiration. Users must change their password within the days. This setting impacts only when creating a user, not impacts to exisiting users. If set to exisiting users, run the command [chage -M (days) (user)].
+    
+    > `vim /etc/login.defs`
+  
+    >![image](https://user-images.githubusercontent.com/60623613/141210480-17c81ea5-117c-4577-b243-cf78ee8245e2.png)
+  
+    >![image](https://user-images.githubusercontent.com/60623613/141211094-374023a2-2e94-4a4d-ae9e-a521845e950b.png)
 
-  - [ ] _The minimum number of days allowed before the modification of a password will
+    
+    >![image](https://user-images.githubusercontent.com/60623613/141209040-c9228ba5-eea4-4a1c-a38c-df445380e21a.png)
+
+    >![image](https://user-images.githubusercontent.com/60623613/141210102-4f733765-1e8d-48bf-af75-c55893b3a10a.png)
+
+  - [x] _The minimum number of days allowed before the modification of a password will
 be set to 2._
+  
+    > Set minimum number of days available of password. Users must use their password at least this days after changing it. This setting impacts only when creating a user, not impacts to exisiting users. If set to exisiting users, run the command [chage -m (days) (user)].
 
-  - [ ] _The user has to receive a warning message 7 days before their password expires._
+    > `vim /etc/login.defs`
+  
+    >![image](https://user-images.githubusercontent.com/60623613/141210301-962d6dce-6a80-4735-9dc9-30d31ee4dcd6.png)
 
-  - [ ] _Your password must be at least 10 characters long. It must contain an uppercase
-letter and a number. Also, it must not contain more than 3 consecutive identical
-characters._
+    >![image](https://user-images.githubusercontent.com/60623613/141210381-aab429af-895d-4826-86c1-336036a74388.png)
+
+  - [x] _The user has to receive a warning message 7 days before their password expires._
+    
+    > Set number of days for warnings before expiration.
+      This setting impacts only when creating a user, not impacts to exisiting users.
+      If set to exisiting users, run the command [chage -W (days) (user)].
+  
+    > `vim /etc/login.defs`
+  
+    >![image](https://user-images.githubusercontent.com/60623613/141210772-75bf4ffb-87a6-4f3e-8b5e-9a1abd78a7a2.png)
+
+    >![image](https://user-images.githubusercontent.com/60623613/141210833-7d4d6adf-0e86-4ea4-ac12-998c74af40c9.png)
+
+  - [x] _Your password must be at least 10 characters long. It must contain an uppercase letter and a number. Also, it must not contain more than 3 consecutive identical characters._
+  
+    >	Set minimum password length. Users can not set their password length less than this parameter.
+  
+    > `vim /etc/security/pwquality.conf`
+  
+    >![image](https://user-images.githubusercontent.com/60623613/141211527-82833888-f1db-4af3-8e2f-aa98a63c78c5.png)
+
+    >![image](https://user-images.githubusercontent.com/60623613/141211611-18ebc508-b098-49a9-b8e1-ddb2a4b99e1a.png)
+
+    >	Require at least one lowercase character in the new password.
+  
+    >![image](https://user-images.githubusercontent.com/60623613/141211903-ab9cd6a9-0dd2-4af4-97f4-80f9b53638ff.png)
+
+    >	Require at least one digit in the new password.
+  
+    >![image](https://user-images.githubusercontent.com/60623613/141212018-43fb81a9-263b-46e1-8fe9-7ae65f7b1b5f.png)
+
+    >	Set maximum number of allowed consecutive same characters in the new password.
+  
+    >![image](https://user-images.githubusercontent.com/60623613/141212139-b069388a-8d6b-4979-8ce1-46d36a2fe8a5.png)
   
   - [ ] _The password must not include the name of the user._
 
