@@ -414,8 +414,4 @@ hostname file and communicated to the Linux kernel by initialization scripts thr
 hostname command. The current value is available in a virtual filesystem, and you can get it
 with the cat /proc/sys/kernel/hostname command.
   
--[ ] _You have to implement a strong **password policy**._
-  
-> [Linux-PAM](http://www.linux-pam.org/Linux-PAM-html/sag-introduction.html) (Pluggable Authentication Modules for Linux) is a suite of shared libraries that enable the local system administrator to choose how applications authenticate users.
-  
-> Historically an application that has required a given user to be authenticated, has had to be compiled to use a specific authentication mechanism. For example, in the case of traditional UN*X systems, the identity of the user is verified by the user entering a correct password. This password, after being prefixed by a two character ``salt'', is encrypted (with crypt(3)). The user is then authenticated if this encrypted password is identical to the second field of the user's entry in the system password database (the /etc/passwd file). On such systems, most if not all forms of privileges are granted based on this single authentication scheme. Privilege comes in the form of a personal user-identifier (UID) and membership of various groups. Services and applications are available based on the personal and group identity of the user. Traditionally, group membership has been assigned based on entries in the /etc/group file.
+- [ ] _You have to implement a strong **password policy**._
