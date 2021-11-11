@@ -558,7 +558,13 @@ be set to 2._
   
     >![image](https://user-images.githubusercontent.com/60623613/141212139-b069388a-8d6b-4979-8ce1-46d36a2fe8a5.png)
   
-  - [ ] _The password must not include the name of the user._
+  - [x] _The password must not include the name of the user._
+  
+    > Check whether the words longer than 3 characters from the GECOS field of the user's passwd entry are contained in the new password.
+  
+    > The gecos field, or [GECOS](https://en.wikipedia.org/wiki/Gecos_field) field is a field of each record in the /etc/passwd file on Unix, and similar operating systems. On UNIX, it is the 5th of 7 fields in a record. It is typically used to record general information about the account or its user(s) such as their real name and phone number.
+  
+    >![image](https://user-images.githubusercontent.com/60623613/141298683-8cb025a5-8ea4-4284-ac5c-0800560e038a.png)
 
   - [ ] _The following rule does not apply to the root password: The password must have
 at least 7 characters that are not part of the former password._
