@@ -546,9 +546,9 @@ be set to 2._
 
     >![image](https://user-images.githubusercontent.com/60623613/141211611-18ebc508-b098-49a9-b8e1-ddb2a4b99e1a.png)
 
-    >	Require at least one lowercase character in the new password.
+    >	Require at least one uppercase character in the new password.
   
-    >![image](https://user-images.githubusercontent.com/60623613/141211903-ab9cd6a9-0dd2-4af4-97f4-80f9b53638ff.png)
+    >![image](https://user-images.githubusercontent.com/60623613/141305935-28eda24c-4621-4a2c-9148-ddfe10db8403.png)
 
     >	Require at least one digit in the new password.
   
@@ -562,11 +562,23 @@ be set to 2._
   
     > Check whether the words longer than 3 characters from the GECOS field of the user's passwd entry are contained in the new password.
   
-    > The gecos field, or [GECOS](https://en.wikipedia.org/wiki/Gecos_field) field is a field of each record in the /etc/passwd file on Unix, and similar operating systems. On UNIX, it is the 5th of 7 fields in a record. It is typically used to record general information about the account or its user(s) such as their real name and phone number.
+    > The [gecos field](https://en.wikipedia.org/wiki/Gecos_field) is a field of each record in the /etc/passwd file on Unix, and similar operating systems. On UNIX, it is the 5th of 7 fields in a record. It is typically used to record general information about the account or its user(s) such as their real name and phone number.
   
     >![image](https://user-images.githubusercontent.com/60623613/141298683-8cb025a5-8ea4-4284-ac5c-0800560e038a.png)
+  
+    >![image](https://user-images.githubusercontent.com/60623613/141306286-0fba9b9b-770c-4222-bad7-1cd802fc8755.png)
 
-  - [ ] _The following rule does not apply to the root password: The password must have
+  - [x] _The following rule does not apply to the root password: The password must have
 at least 7 characters that are not part of the former password._
+  
+    > Set number of characters in the new password that must not be present in the old password.
+  
+    >![image](https://user-images.githubusercontent.com/60623613/141301300-e5dd496b-9b07-42d4-8880-c37eed43a519.png)
 
-  - [ ] _Of course, your root password has to comply with this policy._ 
+  - [x] _Of course, your root password has to comply with this policy._
+  
+    >![image](https://user-images.githubusercontent.com/60623613/141306669-2d77c501-551e-4a15-b4e5-a82c0f33a581.png)
+
+⚠️ **WARNING**: _After setting up your configuration files, you will have to change all the passwords of the accounts present on the virtual machine, including the root account._
+  
+  
