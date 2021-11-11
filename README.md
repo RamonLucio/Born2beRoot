@@ -601,7 +601,7 @@ at least 7 characters that are not part of the former password._
     
     >![image](https://user-images.githubusercontent.com/60623613/141333890-bccf88ca-3663-44b9-9feb-47da5398439f.png)
 
-⚠️ **WARNING**: _After setting up your configuration files, you will have to change all the passwords of the accounts present on the virtual machine, including the root account._
+⚠️ **WARNING**: _After setting up your configuration files, you will have to **change all the passwords** of the accounts present on the virtual machine, including the root account._
   
 ### [How to change passwords?](https://tldp.org/LDP/lame/LAME/linux-admin-made-easy/changing-user-passwords.html)
   
@@ -618,3 +618,55 @@ at least 7 characters that are not part of the former password._
 >![image](https://user-images.githubusercontent.com/60623613/141330071-8fff764b-b45e-4a63-8fe3-766dae88f6a0.png)
 
 - [ ] _You have to install and configure sudo following strict rules_
+  
+`apt install sudo`
+  
+![image](https://user-images.githubusercontent.com/60623613/141348477-9a6c4fc6-435a-4983-aa2d-11fe795149b4.png)
+
+
+### What is sudo?
+  
+>[Sudo](https://wiki.debian.org/sudo/) (sometimes considered as short for Super-user do) is a program designed to let system administrators allow some users to execute some commands as root (or another user). The basic philosophy is to give as few privileges as possible but still allow people to get their work done. Sudo is also an effective way to log who ran which command and when.
+  
+### [Why sudo?]()
+  
+>Using sudo is better (safer) than opening a session as root for a number of reasons, including:
+  > - Nobody needs to know the root password (sudo prompts for the current user's password). Extra privileges can be granted to individual users temporarily, and then taken away without the need for a password change.
+  > - It's easy to run only the commands that require special privileges via sudo; the rest of the time, you work as an unprivileged user, which reduces the damage that mistakes can cause.
+  > - Auditing/logging: when a sudo command is executed, the original username and the command are logged.
+
+>For the reasons above, switching to root using sudo -i (or sudo su) is usually deprecated because it cancels the above features. 
+
+>Debian's default configuration allows users in the sudo group to run any command via sudo.
+
+#### Verifying sudo membership
+
+>Once logged in as a user, you can verify whether or not the user belongs to group=sudo using either the id or groups commands. E.g., a user with id=foo should see output from
+  
+>![image](https://user-images.githubusercontent.com/60623613/141338540-9737ecd1-6516-4f76-8b18-3c465cda7ee5.png)
+
+#### Add existing user from commandline
+
+>To add an existing user with id=username to group=sudo:
+  
+  `sudo adduser username sudo`
+
+>Alternatively, you can first get root (e.g., sudo su -) and then run the same commands without prefix=sudo:
+  
+  >![image](https://user-images.githubusercontent.com/60623613/141374362-725be6d5-ab2e-4ba1-9a64-0dabd1f227dc.png)
+
+>After being added to a new group **the user must log out and then log back in again for the new group to take effect**. Groups are only assigned to users at login time. A most common source of confusion is that people add themselves to a new group but then do not log out and back in again and then have problems because the group is not assigned; be sure to verify group membership.
+  
+  >![image](https://user-images.githubusercontent.com/60623613/141374485-ac5cb64c-35ba-4dc1-9425-b2c64622ab28.png)
+
+  
+>After being added to a new group the user must log out and then log back in again for the new group to take effect. Groups are only assigned to users at login time. A most common source of confusion is that people add themselves to a new group but then do not log out and back in again and then have problems because the group is not assigned; be sure to verify group membership.
+
+_To set up a strong configuration for your sudo group, you have to comply with the following requirements:_
+  - [ ] _Authentication using sudo has to be limited to 3 attempts in the event of an incorrect password._
+  - [ ] _A custom message of your choice has to be displayed if an error due to a wrong password occurs when using sudo._
+  - [ ] _Each action using sudo has to be archived, both inputs and outputs. The log file has to be saved in the /var/log/sudo/ folder._
+  - [ ] _The TTY mode has to be enabled for security reasons._
+  - [ ] _For security reasons too, the paths that can be used by sudo must be restricted._
+  Example:
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
