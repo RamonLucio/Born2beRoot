@@ -661,6 +661,8 @@ at least 7 characters that are not part of the former password._
 _To set up a strong **configuration for your sudo group**, you have to comply with the following requirements:_
   
   ### How to configure sudo group?
+  
+  >The [sudoers](https://manpages.debian.org/bullseye/sudo-ldap/sudoers.5.en.html) policy plugin determines a user's sudo privileges. It is the default sudo policy plugin. The policy is driven by the /etc/sudoers file or, optionally in LDAP.
     
   - [ ] _Authentication using sudo has to be limited to 3 attempts in the event of an incorrect password._
   
@@ -687,3 +689,9 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
   - [ ] _For security reasons too, the paths that can be used by sudo must be restricted._
   Example:
   /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+
+  Previous versions did not include that line. If you had a locally modified /etc/sudoers (most would) and then upgraded and kept your locally modified version then this required line is now missing. It no longer overrides your PATH when using sudo. This most likely results in PATH not being set properly and not including the system directories. The fix is to merge your local changes into the new package /etc/sudoers file. Or to put your local changes in the new /etc/sudoers.d/ location as a uniquely named file such as /etc/sudoers.d/local-sudoers.
+  
+  If set, sudo will use this value in place of the user's PATH environment variable. This option can be used to reset the PATH to a known good value that contains directories for system administrator commands such as /usr/sbin.
+  
+  Users in the group specified by the exempt_group option are not affected by secure_path. This option is not set by default.
