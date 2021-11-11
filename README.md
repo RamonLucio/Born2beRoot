@@ -617,18 +617,17 @@ at least 7 characters that are not part of the former password._
 
 >![image](https://user-images.githubusercontent.com/60623613/141330071-8fff764b-b45e-4a63-8fe3-766dae88f6a0.png)
 
-- [ ] _You have to install and configure sudo following strict rules_
+- [x] _You have to **install and configure sudo** following strict rules_
   
 `apt install sudo`
   
 ![image](https://user-images.githubusercontent.com/60623613/141348477-9a6c4fc6-435a-4983-aa2d-11fe795149b4.png)
 
-
 ### What is sudo?
   
 >[Sudo](https://wiki.debian.org/sudo/) (sometimes considered as short for Super-user do) is a program designed to let system administrators allow some users to execute some commands as root (or another user). The basic philosophy is to give as few privileges as possible but still allow people to get their work done. Sudo is also an effective way to log who ran which command and when.
   
-### [Why sudo?]()
+### Why sudo?
   
 >Using sudo is better (safer) than opening a session as root for a number of reasons, including:
   > - Nobody needs to know the root password (sudo prompts for the current user's password). Extra privileges can be granted to individual users temporarily, and then taken away without the need for a password change.
@@ -659,14 +658,32 @@ at least 7 characters that are not part of the former password._
   
   >![image](https://user-images.githubusercontent.com/60623613/141374485-ac5cb64c-35ba-4dc1-9425-b2c64622ab28.png)
 
+_To set up a strong **configuration for your sudo group**, you have to comply with the following requirements:_
   
->After being added to a new group the user must log out and then log back in again for the new group to take effect. Groups are only assigned to users at login time. A most common source of confusion is that people add themselves to a new group but then do not log out and back in again and then have problems because the group is not assigned; be sure to verify group membership.
-
-_To set up a strong configuration for your sudo group, you have to comply with the following requirements:_
+  ### How to configure sudo group?
+    
   - [ ] _Authentication using sudo has to be limited to 3 attempts in the event of an incorrect password._
+  
+    passwd_tries
+  
+      The number of tries a user gets to enter his/her password before sudo logs the failure and exits. The default is 3.
+  
   - [ ] _A custom message of your choice has to be displayed if an error due to a wrong password occurs when using sudo._
+  
+    badpass_message
+  
+      Message that is displayed if a user enters an incorrect password. The default is Sorry, try again. unless insults are enabled.
+  
   - [ ] _Each action using sudo has to be archived, both inputs and outputs. The log file has to be saved in the /var/log/sudo/ folder._
+  
+    If the logfile option is set, sudoers will log to a local file, such as /var/log/sudo. When logging to a file, sudoers uses a format similar to syslog(3), with a few important differences:
+  
+    When I/O logging is enabled, sudo will run the command in a pseudo-terminal and log all user input and/or output, depending on which options are enabled. I/O can be logged either to the local machine or to a remote log server. For local logs, I/O is logged to the directory specified by the iolog_dir option (/var/log/sudo-io by default) using a unique session ID that is included in the sudo log line, prefixed with “TSID=”. The iolog_file option may be used to control the format of the session ID. For remote logs, the log_servers
+  
   - [ ] _The TTY mode has to be enabled for security reasons._
+  
+    If set, sudo will only run when the user is logged in to a real tty. When this flag is set, sudo can only be run from a login session and not via other means such as cron(8) or cgi-bin scripts. This flag is off by default.
+  
   - [ ] _For security reasons too, the paths that can be used by sudo must be restricted._
   Example:
   /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
