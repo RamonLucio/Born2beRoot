@@ -1,15 +1,23 @@
 # Born2beRoot
+
 ## Summary
 _This document is a **System Administration** related exercise._
+
 ### What is a System Administrator?
+
 >A [system administrator](https://en.wikipedia.org/wiki/System_administrator) is a person who is responsible for the upkeep, configuration, and reliable operation of computer systems; especially multi-user computers, such as servers. The system administrator seeks to ensure that the uptime, performance, resources, and security of the computers they manage meet the needs of the users, without exceeding a set budget when doing so.
+  
+More info: [Case Study](https://www.debian.org/doc/manuals/debian-handbook/case-study.en.html)
+
 ## Introduction
 _This project aims to introduce you to the wonderful world of **virtualization**._
 
 - [x] _You will **create your first machine in VirtualBox** (or UTM if you can’t use VirtualBox)
 under specific instructions. Then, at the end of this project, you will be able to set up
 your own operating system while implementing strict rules._
+
 ### What is virtualization?
+
 >When we describe VirtualBox as a ["virtualization"](https://www.virtualbox.org/wiki/Virtualization) product, we refer to "full virtualization", that is, the particular kind of virtualization that allows an unmodified operating system with all of its installed software to run in a special environment, on top of your existing operating system. This environment, called a "virtual machine", is created by the virtualization software by intercepting access to certain hardware components and certain features. The physical computer is then usually called the "host", while the virtual machine is often called a "guest". Most of the guest code runs unmodified, directly on the host computer, and the guest operating system "thinks" it's running on real machine.
 
 >There are several scenarios that make virtualization attractive:
@@ -18,6 +26,7 @@ your own operating system while implementing strict rules._
 >- **Testing and disaster recovery.** Especially with the use of snapshots, one can mess with a computing environment by running it as a virtual machine. If something goes wrong, one can easily switch back to a previous snapshot and avoid the need of frequent backups and restores.
 
 ### How to [create a virtual machine](https://www.virtualbox.org/manual/UserManual.html#gui-createvm) in VirtualBox?
+
 >Click New in the VirtualBox Manager window.
 
 >![image](https://user-images.githubusercontent.com/60623613/140510013-8ac8b077-a4f8-434e-9064-b417594b3776.png)
@@ -44,11 +53,11 @@ your own operating system while implementing strict rules._
 
 >When a VM is started for the first time, the First Start Wizard, is displayed. This wizard helps you to select an installation medium. Since the VM is created empty, it would otherwise behave just like a real computer with no OS installed. It will do nothing and display an error message that no bootable OS was found.
 
+>If you have [downloaded](https://www.debian.org/download) installation media from the Internet in the form of an ISO image file such as with a Linux distribution, you would normally burn this file to an empty CD or DVD and proceed as described above. With Oracle VM VirtualBox however, you can skip this step and mount the ISO file directly. Oracle VM VirtualBox will then present this file as a CD or DVD-ROM drive to the virtual machine, much like it does with virtual hard disk images.
 >![image](https://user-images.githubusercontent.com/60623613/140512001-c7fc0f10-b80c-4378-a4ba-ac75f27fd57f.png)
 
->If you have [downloaded](https://www.debian.org/download) installation media from the Internet in the form of an ISO image file such as with a Linux distribution, you would normally burn this file to an empty CD or DVD and proceed as described above. With Oracle VM VirtualBox however, you can skip this step and mount the ISO file directly. Oracle VM VirtualBox will then present this file as a CD or DVD-ROM drive to the virtual machine, much like it does with virtual hard disk images.
-
 ## General guidelines
+
 _The use of VirtualBox (or UTM if you can’t use VirtualBox) is mandatory._
 
 - [ ] _You only have to turn in a signature.txt file at the root of your repository. You
@@ -71,17 +80,28 @@ file:
 >- 6e657c4619944be17df3c31faa030c25e43e40af
 
 ### What is virtual disk signature?
+
 >A [disk signature](https://www.lifewire.com/what-is-a-disk-signature-2625851) is a unique, identifying number for a hard disk drive or other data storage device stored as part of the master boot record. An operating system uses it to differentiate among storage devices on your computer.
+
 ### What is a ".vdi" file?
+
 >[Disk image files](https://docs.oracle.com/en/virtualization/virtualbox/6.0/user/vdidetails.html) reside on the host system and are seen by the guest systems as hard disks of a certain geometry. When a guest OS reads from or writes to a hard disk, Oracle VM VirtualBox redirects the request to the image file.
 >- **VDI.** Normally, Oracle VM VirtualBox uses its own container format for guest hard disks. This is called a Virtual Disk Image (VDI) file. This format is used when you create a new virtual machine with a new disk.
+
 ## Mandatory part
+
 - [x] _You must choose as an operating system either the **latest stable version** of **Debian** (no
 testing/unstable), or the latest stable version of **CentOS**. Debian is highly recommended
 if you are new to system administration._
+
 ### Why choose Debian?
+
 >There are a lot of reasons to [choose Debian](https://www.debian.org/intro/why_debian) as your operating system – as a user, as a developer, and even in enterprise environments. Most users appreciate the stability, and the smooth upgrade processes of both packages and the entire distribution. Debian is also widely used by software and hardware developers because it runs on numerous architectures and devices, offers a public bug tracker and other tools for developers. If you plan to use Debian in a professional environment, there are additional benefits like LTS versions and cloud images.
+
+More info: [Why the Debian Distribution?](https://www.debian.org/doc/manuals/debian-handbook/sect.why-debian.en.html)
+
 ### Why choose the latest stable version?
+
 >The [latest release](https://wiki.debian.org/DebianReleases) is Debian 11.1. It is also (currently) known as stable or by its codename "Bullseye".At any given time, there is one stable release of Debian, which has the support of the Debian security team. When a new stable version is released, the security team will usually cover the previous version for a year or so, while they also cover the new/current version. Only stable is recommended for production use. Stable is recommended for applications requiring production-level stability and security (servers, firewalls etc) and is also recommended for those who are new to Linux.
 
 ### How to [install Debian](https://www.debian.org/doc/manuals/debian-handbook/sect.installation-steps.en.html)?
