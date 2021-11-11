@@ -581,4 +581,12 @@ at least 7 characters that are not part of the former password._
 
 ⚠️ **WARNING**: _After setting up your configuration files, you will have to change all the passwords of the accounts present on the virtual machine, including the root account._
   
+### [How to change passwords?](https://tldp.org/LDP/lame/LAME/linux-admin-made-easy/changing-user-passwords.html)
   
+> To change a password on behalf of a user, first sign on or "su" to the "root" account. Then type, ``passwd user'' (where user is the username for the password you are changing). The system will prompt you to enter a password. Passwords do not echo to the screen when you enter them.
+
+> You can also change your own password, by typing ``passwd'' (without specifying a username). You will be prompted to enter your old password for verification, and then a new password.
+  
+>![image](https://user-images.githubusercontent.com/60623613/141308751-a3565c72-e839-4962-8bd5-a1a055e12524.png)
+
+>![image](https://user-images.githubusercontent.com/60623613/141309128-20573df3-6ce1-4e2e-a097-09bade3ddb99.png)
