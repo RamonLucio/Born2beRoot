@@ -436,7 +436,7 @@ with the cat /proc/sys/kernel/hostname command.
   
 - [ ] _You have to implement a strong **password policy**._
   
-### [Password Policy: The Good, The Bad, and The Ugly](https://www.researchgate.net/profile/Wayne-Summers-2/publication/234799064_Password_policy_The_good_the_bad_and_the_ugly/links/54f204310cf2f9e34eff3d50/Password-policy-The-good-the-bad-and-the-ugly.pdf)
+### [Password Policy: The Good, The Bad, and The Ugly](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Password+Policy%3A+The+Good%2C+The+Bad%2C+and+The+Ugly&btnG=)
 
 #### Introduction
   > In today’s world of increasing dependence on computers and computer systems, it is
@@ -598,15 +598,23 @@ at least 7 characters that are not part of the former password._
   - [x] _Of course, your root password has to comply with this policy._
   
     >![image](https://user-images.githubusercontent.com/60623613/141306669-2d77c501-551e-4a15-b4e5-a82c0f33a581.png)
+    
+    >![image](https://user-images.githubusercontent.com/60623613/141333890-bccf88ca-3663-44b9-9feb-47da5398439f.png)
 
 ⚠️ **WARNING**: _After setting up your configuration files, you will have to change all the passwords of the accounts present on the virtual machine, including the root account._
   
 ### [How to change passwords?](https://tldp.org/LDP/lame/LAME/linux-admin-made-easy/changing-user-passwords.html)
   
-> To change a password on behalf of a user, first sign on or "su" to the "root" account. Then type, ``passwd user'' (where user is the username for the password you are changing). The system will prompt you to enter a password. Passwords do not echo to the screen when you enter them.
+> To change a password on behalf of a user, first sign on or "su" to the "root" account. Then type, `passwd user` (where user is the username for the password you are changing). The system will prompt you to enter a password. Passwords do not echo to the screen when you enter them.
 
-> You can also change your own password, by typing ``passwd'' (without specifying a username). You will be prompted to enter your old password for verification, and then a new password.
+> You can also change your own password, by typing `passwd` (without specifying a username). You will be prompted to enter your old password for verification, and then a new password.
   
 >![image](https://user-images.githubusercontent.com/60623613/141308751-a3565c72-e839-4962-8bd5-a1a055e12524.png)
 
 >![image](https://user-images.githubusercontent.com/60623613/141309128-20573df3-6ce1-4e2e-a097-09bade3ddb99.png)
+
+>![image](https://user-images.githubusercontent.com/60623613/141328959-e83a36de-af03-4334-a82b-4e6733aabe92.png)
+
+>![image](https://user-images.githubusercontent.com/60623613/141330071-8fff764b-b45e-4a63-8fe3-766dae88f6a0.png)
+
+- [ ] _You have to install and configure sudo following strict rules_
