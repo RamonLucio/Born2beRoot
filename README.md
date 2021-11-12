@@ -673,29 +673,27 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
       
   - [x] _Authentication using sudo has to be limited to 3 attempts in the event of an incorrect password._
   
-    >passwd_tries
+    >[passwd_tries](https://manpages.debian.org/bullseye/sudo-ldap/sudoers.5.en.html#SUDOERS_OPTIONS)
       > - The number of tries a user gets to enter his/her password before sudo logs the failure and exits. The default is 3.
   
   - [x] _A custom message of your choice has to be displayed if an error due to a wrong password occurs when using sudo._
   
-    >badpass_message
+    >[badpass_message](https://manpages.debian.org/bullseye/sudo-ldap/sudoers.5.en.html#SUDOERS_OPTIONS)
       > - Message that is displayed if a user enters an incorrect password. The default is Sorry, try again. unless insults are enabled.
   
-  >![image](https://user-images.githubusercontent.com/60623613/141497000-425bd100-8eea-4be2-9362-a109e90d0092.png)
+      >![image](https://user-images.githubusercontent.com/60623613/141497000-425bd100-8eea-4be2-9362-a109e90d0092.png)
 
-  
-  >![image](https://user-images.githubusercontent.com/60623613/141496802-81b43198-7905-4da6-bee1-ce133cc918c8.png)
+      >![image](https://user-images.githubusercontent.com/60623613/141496802-81b43198-7905-4da6-bee1-ce133cc918c8.png)
 
-  - [ ] _Each action using sudo has to be archived, both inputs and outputs. The log file has to be saved in the /var/log/sudo/ folder._
+  - [x] _Each action using sudo has to be archived, both inputs and outputs. The log file has to be saved in the /var/log/sudo/ folder._
   
-    If the logfile option is set, sudoers will log to a local file, such as /var/log/sudo. When logging to a file, sudoers uses a format similar to syslog(3), with a few important differences:
+    >When I/O logging is enabled, sudo will run the command in a pseudo-terminal and log all user input and/or output, depending on which options are enabled. I/O can be logged either to the local machine or to a remote log server. For local logs, I/O is logged to the directory specified by the iolog_dir option (/var/log/sudo-io by default) using a unique session ID that is included in the sudo log line, prefixed with “TSID=”.
   
-    When I/O logging is enabled, sudo will run the command in a pseudo-terminal and log all user input and/or output, depending on which options are enabled. I/O can be logged either to the local machine or to a remote log server. For local logs, I/O is logged to the directory specified by the iolog_dir option (/var/log/sudo-io by default) using a unique session ID that is included in the sudo log line, prefixed with “TSID=”. The iolog_file option may be used to control the format of the session ID. For remote logs, the log_servers
+    >![image](https://user-images.githubusercontent.com/60623613/141522691-226561e7-5b0b-48cf-9fa2-9548c53b9ab0.png)
   
   - [x] _The TTY mode has to be enabled for security reasons._
   
-    >requiretty
-  
+    >[requiretty](https://manpages.debian.org/bullseye/sudo-ldap/sudoers.5.en.html#SUDOERS_OPTIONS)
       > - If set, sudo will only run when the user is logged in to a real tty. When this flag is set, sudo can only be run from a login session and not via other means such as cron(8) or cgi-bin scripts. This flag is off by default.
       More info: [Why would I want to require a tty for sudo? What's the security benefit of requiring it?](https://stackoverflow.com/questions/67985925/why-would-i-want-to-require-a-tty-for-sudo-whats-the-security-benefit-of-requi)
   
