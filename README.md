@@ -663,28 +663,43 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
   ### How to configure sudo group?
   
   >The [sudoers](https://manpages.debian.org/bullseye/sudo-ldap/sudoers.5.en.html) policy plugin determines a user's sudo privileges. It is the default sudo policy plugin. The policy is driven by the /etc/sudoers file or, optionally in LDAP.
-    
-  - [ ] _Authentication using sudo has to be limited to 3 attempts in the event of an incorrect password._
   
-    passwd_tries
+  >![image](https://user-images.githubusercontent.com/60623613/141489375-505810eb-4f68-4b32-9c1f-e5cf4cdfac7f.png)
   
-      The number of tries a user gets to enter his/her password before sudo logs the failure and exits. The default is 3.
+  >![image](https://user-images.githubusercontent.com/60623613/141491250-19d9abbe-ea60-46c2-b58b-caa18968a311.png)
+
+  #### What is visudo?
+  >[visudo](https://linux.die.net/man/8/visudo) edits the sudoers file in a safe fashion. visudo locks the sudoers file against multiple simultaneous edits, provides basic sanity checks, and checks for parse errors. If the sudoers file is currently being edited you will receive a message to try again later.
+      
+  - [x] _Authentication using sudo has to be limited to 3 attempts in the event of an incorrect password._
   
-  - [ ] _A custom message of your choice has to be displayed if an error due to a wrong password occurs when using sudo._
+    >passwd_tries
+      > - The number of tries a user gets to enter his/her password before sudo logs the failure and exits. The default is 3.
   
-    badpass_message
+  - [x] _A custom message of your choice has to be displayed if an error due to a wrong password occurs when using sudo._
   
-      Message that is displayed if a user enters an incorrect password. The default is Sorry, try again. unless insults are enabled.
+    >badpass_message
+      > - Message that is displayed if a user enters an incorrect password. The default is Sorry, try again. unless insults are enabled.
   
+  >![image](https://user-images.githubusercontent.com/60623613/141497000-425bd100-8eea-4be2-9362-a109e90d0092.png)
+
+  
+  >![image](https://user-images.githubusercontent.com/60623613/141496802-81b43198-7905-4da6-bee1-ce133cc918c8.png)
+
   - [ ] _Each action using sudo has to be archived, both inputs and outputs. The log file has to be saved in the /var/log/sudo/ folder._
   
     If the logfile option is set, sudoers will log to a local file, such as /var/log/sudo. When logging to a file, sudoers uses a format similar to syslog(3), with a few important differences:
   
     When I/O logging is enabled, sudo will run the command in a pseudo-terminal and log all user input and/or output, depending on which options are enabled. I/O can be logged either to the local machine or to a remote log server. For local logs, I/O is logged to the directory specified by the iolog_dir option (/var/log/sudo-io by default) using a unique session ID that is included in the sudo log line, prefixed with “TSID=”. The iolog_file option may be used to control the format of the session ID. For remote logs, the log_servers
   
-  - [ ] _The TTY mode has to be enabled for security reasons._
+  - [x] _The TTY mode has to be enabled for security reasons._
   
-    If set, sudo will only run when the user is logged in to a real tty. When this flag is set, sudo can only be run from a login session and not via other means such as cron(8) or cgi-bin scripts. This flag is off by default.
+    >requiretty
+  
+      > - If set, sudo will only run when the user is logged in to a real tty. When this flag is set, sudo can only be run from a login session and not via other means such as cron(8) or cgi-bin scripts. This flag is off by default.
+      More info: [Why would I want to require a tty for sudo? What's the security benefit of requiring it?](https://stackoverflow.com/questions/67985925/why-would-i-want-to-require-a-tty-for-sudo-whats-the-security-benefit-of-requi)
+  
+    >![image](https://user-images.githubusercontent.com/60623613/141503188-9bc1ea9c-d5f7-4ee8-b5e2-c39271113f4a.png)
   
   - [x] _For security reasons too, the paths that can be used by sudo must be restricted._
   Example: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
