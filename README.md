@@ -79,13 +79,13 @@ file:
 >This is an example of what kind of output you will get:
 >- 6e657c4619944be17df3c31faa030c25e43e40af
 
-### What is virtual disk signature?
+### [What is virtual disk signature?](https://www.lifewire.com/what-is-a-disk-signature-2625851) 
 
->A [disk signature](https://www.lifewire.com/what-is-a-disk-signature-2625851) is a unique, identifying number for a hard disk drive or other data storage device stored as part of the master boot record. An operating system uses it to differentiate among storage devices on your computer.
+>A disk signature is a unique, identifying number for a hard disk drive or other data storage device stored as part of the master boot record. An operating system uses it to differentiate among storage devices on your computer.
 
-### What is a ".vdi" file?
+### [What is a ".vdi" file?](https://docs.oracle.com/en/virtualization/virtualbox/6.0/user/vdidetails.html)
 
->[Disk image files](https://docs.oracle.com/en/virtualization/virtualbox/6.0/user/vdidetails.html) reside on the host system and are seen by the guest systems as hard disks of a certain geometry. When a guest OS reads from or writes to a hard disk, Oracle VM VirtualBox redirects the request to the image file.
+>Disk image file reside on the host system and are seen by the guest systems as hard disks of a certain geometry. When a guest OS reads from or writes to a hard disk, Oracle VM VirtualBox redirects the request to the image file.
 >- **VDI.** Normally, Oracle VM VirtualBox uses its own container format for guest hard disks. This is called a Virtual Disk Image (VDI) file. This format is used when you create a new virtual machine with a new disk.
 
 ## Mandatory part
@@ -94,17 +94,17 @@ file:
 testing/unstable), or the latest stable version of **CentOS**. Debian is highly recommended
 if you are new to system administration._
 
-### Why choose Debian?
+### [Why choose Debian?](https://www.debian.org/intro/why_debian)
 
->There are a lot of reasons to [choose Debian](https://www.debian.org/intro/why_debian) as your operating system – as a user, as a developer, and even in enterprise environments. Most users appreciate the stability, and the smooth upgrade processes of both packages and the entire distribution. Debian is also widely used by software and hardware developers because it runs on numerous architectures and devices, offers a public bug tracker and other tools for developers. If you plan to use Debian in a professional environment, there are additional benefits like LTS versions and cloud images.
+>There are a lot of reasons to choose Debian as your operating system – as a user, as a developer, and even in enterprise environments. Most users appreciate the stability, and the smooth upgrade processes of both packages and the entire distribution. Debian is also widely used by software and hardware developers because it runs on numerous architectures and devices, offers a public bug tracker and other tools for developers. If you plan to use Debian in a professional environment, there are additional benefits like LTS versions and cloud images.
 
 More info: [Why the Debian Distribution?](https://www.debian.org/doc/manuals/debian-handbook/sect.why-debian.en.html)
 
-### Why choose the latest stable version?
+### [Why choose the latest stable version?](https://wiki.debian.org/DebianReleases)
 
->The [latest release](https://wiki.debian.org/DebianReleases) is Debian 11.1. It is also (currently) known as stable or by its codename "Bullseye".At any given time, there is one stable release of Debian, which has the support of the Debian security team. When a new stable version is released, the security team will usually cover the previous version for a year or so, while they also cover the new/current version. Only stable is recommended for production use. Stable is recommended for applications requiring production-level stability and security (servers, firewalls etc) and is also recommended for those who are new to Linux.
+>The latest release is Debian 11.1. It is also (currently) known as stable or by its codename "Bullseye".At any given time, there is one stable release of Debian, which has the support of the Debian security team. When a new stable version is released, the security team will usually cover the previous version for a year or so, while they also cover the new/current version. Only stable is recommended for production use. Stable is recommended for applications requiring production-level stability and security (servers, firewalls etc) and is also recommended for those who are new to Linux.
 
-### How to [install Debian](https://www.debian.org/doc/manuals/debian-handbook/sect.installation-steps.en.html)?
+### [How to install Debian](https://www.debian.org/doc/manuals/debian-handbook/sect.installation-steps.en.html)?
 >For a standard installation, you only need to choose “Install” or “Graphical install” (with the arrow keys), then press the Enter key to initiate the remainder of the installation process.
 
 >![image](https://user-images.githubusercontent.com/60623613/140512599-b71d5ab2-6e4f-4755-a2ce-dd422fec0315.png)
