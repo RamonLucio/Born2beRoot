@@ -3,9 +3,9 @@
 ## Summary
 _This document is a **System Administration** related exercise._
 
-### What is a System Administrator?
+### [What is a System Administrator?](https://en.wikipedia.org/wiki/System_administrator)
 
->A [system administrator](https://en.wikipedia.org/wiki/System_administrator) is a person who is responsible for the upkeep, configuration, and reliable operation of computer systems; especially multi-user computers, such as servers. The system administrator seeks to ensure that the uptime, performance, resources, and security of the computers they manage meet the needs of the users, without exceeding a set budget when doing so.
+>A system administrator is a person who is responsible for the upkeep, configuration, and reliable operation of computer systems; especially multi-user computers, such as servers. The system administrator seeks to ensure that the uptime, performance, resources, and security of the computers they manage meet the needs of the users, without exceeding a set budget when doing so.
   
 More info: [Case Study](https://www.debian.org/doc/manuals/debian-handbook/case-study.en.html)
 
@@ -16,16 +16,16 @@ _This project aims to introduce you to the wonderful world of **virtualization**
 under specific instructions. Then, at the end of this project, you will be able to set up
 your own operating system while implementing strict rules._
 
-### What is virtualization?
+### [What is virtualization?](https://www.virtualbox.org/wiki/Virtualization)
 
->When we describe VirtualBox as a ["virtualization"](https://www.virtualbox.org/wiki/Virtualization) product, we refer to "full virtualization", that is, the particular kind of virtualization that allows an unmodified operating system with all of its installed software to run in a special environment, on top of your existing operating system. This environment, called a "virtual machine", is created by the virtualization software by intercepting access to certain hardware components and certain features. The physical computer is then usually called the "host", while the virtual machine is often called a "guest". Most of the guest code runs unmodified, directly on the host computer, and the guest operating system "thinks" it's running on real machine.
+>When we describe VirtualBox as a "virtualization"product, we refer to "full virtualization", that is, the particular kind of virtualization that allows an unmodified operating system with all of its installed software to run in a special environment, on top of your existing operating system. This environment, called a "virtual machine", is created by the virtualization software by intercepting access to certain hardware components and certain features. The physical computer is then usually called the "host", while the virtual machine is often called a "guest". Most of the guest code runs unmodified, directly on the host computer, and the guest operating system "thinks" it's running on real machine.
 
 >There are several scenarios that make virtualization attractive:
 >- **Operating system support.** With a virtualizer such as VirtualBox, one can run software written for one operating system on another (say, Windows software on Linux) without having to reboot.
 >- **Infrastructure consolidation.** Since the full performance of today's computers is rarely needed full-time, instead of running many such physical computers, one can "pack" many virtual machines onto a few powerful hosts and balance the loads between them. This can save a lot of hardware costs: e.g. by consolidating many servers into a few.
 >- **Testing and disaster recovery.** Especially with the use of snapshots, one can mess with a computing environment by running it as a virtual machine. If something goes wrong, one can easily switch back to a previous snapshot and avoid the need of frequent backups and restores.
 
-### How to [create a virtual machine](https://www.virtualbox.org/manual/UserManual.html#gui-createvm) in VirtualBox?
+### [How to create a virtual machine in VirtualBox?](https://www.virtualbox.org/manual/UserManual.html#gui-createvm)
 
 >Click New in the VirtualBox Manager window.
 
