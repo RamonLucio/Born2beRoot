@@ -705,3 +705,21 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
     >Previous versions did not include that line. If you had a locally modified /etc/sudoers (most would) and then upgraded and kept your locally modified version then this required line is now missing. It no longer overrides your PATH when using sudo. This most likely results in PATH not being set properly and not including the system directories. The fix is to merge your local changes into the new package /etc/sudoers file. Or to put your local changes in the new /etc/sudoers.d/ location as a uniquely named file such as /etc/sudoers.d/local-sudoers.
   
     >![image](https://user-images.githubusercontent.com/60623613/141481834-43c17b44-7d24-4e4e-8897-9fef32dfe449.png)
+
+- [ ] _Finally, you have to create a simple script called monitoring.sh. It must be developed in bash._
+  
+- [ ] _At server startup, the script will display some information (listed below) on all terminals every 10 minutes (take a look at wall). The banner is optional. No error must be visible._
+  
+  _Your script must always be able to display the following information:_
+    - [ ] _The architecture of your operating system and its kernel version._
+    - [ ] _The number of physical processors._
+    - [ ] _The number of virtual processors._
+    - [ ] _The current available RAM on your server and its utilization rate as a percentage._
+    - [ ] _The current available memory on your server and its utilization rate as a percentage._
+    - [ ] _The current utilization rate of your processors as a percentage._
+    - [ ] _The date and time of the last reboot._
+    - [ ] _Whether LVM is active or not._
+    - [ ] _The number of active connections._
+    - [ ] _The number of users using the server._
+    - [ ] _The IPv4 address of your server and its MAC (Media Access Control) address._
+    - [ ] _The number of commands executed with the sudo program._
