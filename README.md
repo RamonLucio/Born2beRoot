@@ -711,7 +711,13 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
 - [ ] _At server startup, the script will display some information (listed below) on all terminals every 10 minutes (take a look at wall). The banner is optional. No error must be visible._
   
   _Your script must always be able to display the following information:_
-    - [ ] _The architecture of your operating system and its kernel version._
+    - [x] _The **architecture** of your operating system and its **kernel version**._
+      
+      [`uname --all`](https://linux.die.net/man/1/uname)
+  
+      ![image](https://user-images.githubusercontent.com/60623613/142035328-559a05c6-b6d3-46b9-89cf-9d6f5e193507.png)
+      
+      More info: [Uname Command in Linux](https://linuxize.com/post/uname-command-in-linux/)
     - [ ] _The number of physical processors._
     - [ ] _The number of virtual processors._
     - [ ] _The current available RAM on your server and its utilization rate as a percentage._
