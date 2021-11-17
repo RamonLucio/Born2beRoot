@@ -718,27 +718,39 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
       ![image](https://user-images.githubusercontent.com/60623613/142035328-559a05c6-b6d3-46b9-89cf-9d6f5e193507.png)
       
       More info: [Uname Command in Linux](https://linuxize.com/post/uname-command-in-linux/)
-    - [ ] _The number of physical processors._
+    
+    - [x] _The number of physical processors._
   
-      To find out how many processors you have, for example, look through /proc/cpuinfo for lines containing the string "physical id". You can grab this with grep and then pass that information through a couple handy filters like this to get a count:
+      >[To find out how many processors you have](https://www.networkworld.com/article/2715970/counting-processors-on-your-linux-box.html), for example, look through /proc/cpuinfo for lines containing the string "physical id". You can grab this with grep and then pass that information through a couple handy filters like this to get a count:
       
       `grep "physical id" /proc/cpuinfo | sort | uniq | wc -l`
   
       ![image](https://user-images.githubusercontent.com/60623613/142243768-d0bb68bd-459e-451c-8906-68083572dca5.png)
 
-      This tells you how many physical processors are on your system, but doesn't answer questions about how many cores or whether your system is using hyper-threading. Note that any particular physical id may appear in the file more than once, so you want to sort lines that contain that string (e.g., "physical id : 0") to be sure that each gets counted only once.
+      >This tells you how many physical processors are on your system, but doesn't answer questions about how many cores or whether your system is using hyper-threading. Note that any particular physical id may appear in the file more than once, so you want to sort lines that contain that string (e.g., "physical id : 0") to be sure that each gets counted only once.
       
     - [x] _The number of virtual processors._
       
-      If your processors are multi-core, you need to know how many virtual processors you have. You can count those by looking for lines that start with "processor".
+      >If your processors are multi-core, you need to know how many virtual processors you have. You can count those by looking for lines that start with "processor".
   
       `grep "^processor" /proc/cpuinfo | wc -l`
   
       ![image](https://user-images.githubusercontent.com/60623613/142246260-00f204eb-2640-43ae-b90c-ab6408c05c2b.png)
   
-      That sounds much more interesting! Even this, however, doesn't tell you the whole story. You might have more virtual processors than physical processors because your processors are mutli-core, because your processors are hyper-threaded, or both. The way to tell how may cores you have is to look for "cpu cores" in your /proc/cpuinfo file. This line will show up for each virtual processor. If the number of cores shown is less than the number of virtual processors, your system is multi-threading.
+      >You might have more virtual processors than physical processors because your processors are mutli-core, because your processors are hyper-threaded, or both. The way to tell how may cores you have is to look for "cpu cores" in your /proc/cpuinfo file. This line will show up for each virtual processor. If the number of cores shown is less than the number of virtual processors, your system is multi-threading.
   
-    - [ ] _The current available RAM on your server and its utilization rate as a percentage._
+    - [x] _The current available RAM on your server and its utilization rate as a percentage._
+  
+      >[free](https://man7.org/linux/man-pages/man1/free.1.html) displays the total amount of free and used physical and swap memory in the system, as well as the buffers and caches used by the kernel. The information is gathered by parsing /proc/meminfo.
+      
+      >--mega Display the amount of memory in megabytes. Implies --si.
+  
+      ![image](https://user-images.githubusercontent.com/60623613/142268158-80579178-3eb0-41ae-99d4-6f8ca4ab858d.png)
+  
+      `free --mega | grep Mem | awk '{printf("Memory Usage: %i/%iMB (%.2f%%)\n", $3, $2, $3/$2*100}'`
+  
+      ![image](https://user-images.githubusercontent.com/60623613/142268803-6aa16303-fe5e-419b-b0c1-96ad95cdf00f.png)
+    
     - [ ] _The current available memory on your server and its utilization rate as a percentage._
     - [ ] _The current utilization rate of your processors as a percentage._
     - [ ] _The date and time of the last reboot._
