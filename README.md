@@ -751,7 +751,20 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
   
       ![image](https://user-images.githubusercontent.com/60623613/142268803-6aa16303-fe5e-419b-b0c1-96ad95cdf00f.png)
     
-    - [ ] _The current available memory on your server and its utilization rate as a percentage._
+    - [x] _The current available memory on your server and its utilization rate as a percentage._
+  
+      >[df](https://linux.die.net/man/1/df) displays the amount of disk space available on the file system containing each file name argument. If no file name is given, the space available on all currently mounted file systems is shown.
+      
+      >--total
+        > - produce a grand total
+  
+      >-h, --human-readable
+        > - print sizes in human readable format (e.g., 1K 234M 2G)
+  
+      `df --total --human-readable | grep "total" | awk '{printf("Disk Usage: %s\%s (%.1f%%)\n", $3, $2, $3/2*100)}'`
+  
+      ![image](https://user-images.githubusercontent.com/60623613/142290244-38e413e7-dc73-45a6-9cf3-e7fb19832e6f.png)
+
     - [ ] _The current utilization rate of your processors as a percentage._
     - [ ] _The date and time of the last reboot._
     - [ ] _Whether LVM is active or not._
