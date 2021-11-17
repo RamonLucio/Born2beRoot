@@ -719,7 +719,25 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
       
       More info: [Uname Command in Linux](https://linuxize.com/post/uname-command-in-linux/)
     - [ ] _The number of physical processors._
-    - [ ] _The number of virtual processors._
+  
+      To find out how many processors you have, for example, look through /proc/cpuinfo for lines containing the string "physical id". You can grab this with grep and then pass that information through a couple handy filters like this to get a count:
+      
+      `grep "physical id" /proc/cpuinfo | sort | uniq | wc -l`
+  
+      ![image](https://user-images.githubusercontent.com/60623613/142243768-d0bb68bd-459e-451c-8906-68083572dca5.png)
+
+      This tells you how many physical processors are on your system, but doesn't answer questions about how many cores or whether your system is using hyper-threading. Note that any particular physical id may appear in the file more than once, so you want to sort lines that contain that string (e.g., "physical id : 0") to be sure that each gets counted only once.
+      
+    - [x] _The number of virtual processors._
+      
+      If your processors are multi-core, you need to know how many virtual processors you have. You can count those by looking for lines that start with "processor".
+  
+      `grep "^processor" /proc/cpuinfo | wc -l`
+  
+      ![image](https://user-images.githubusercontent.com/60623613/142246260-00f204eb-2640-43ae-b90c-ab6408c05c2b.png)
+  
+      That sounds much more interesting! Even this, however, doesn't tell you the whole story. You might have more virtual processors than physical processors because your processors are mutli-core, because your processors are hyper-threaded, or both. The way to tell how may cores you have is to look for "cpu cores" in your /proc/cpuinfo file. This line will show up for each virtual processor. If the number of cores shown is less than the number of virtual processors, your system is multi-threading.
+  
     - [ ] _The current available RAM on your server and its utilization rate as a percentage._
     - [ ] _The current available memory on your server and its utilization rate as a percentage._
     - [ ] _The current utilization rate of your processors as a percentage._
