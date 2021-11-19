@@ -774,7 +774,14 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
   
       `top -n1 | grep "%Cpu" | awk '{printf("CPU load: %.1f%%\n", (100.0-$8)%100)}'`
   
-    - [ ] _The date and time of the last reboot._
+    - [x] _The date and time of the last reboot._
+  
+      `[who](https://linux.die.net/man/1/who) --boot`
+  
+      `who --boot | awk '{printf("Last boot: %s %s", $3, $4)}'`
+  
+      ![image](https://user-images.githubusercontent.com/60623613/142692434-e5a72686-48d8-4ae3-883a-578e0a7d273a.png)
+      
     - [ ] _Whether LVM is active or not._
     - [ ] _The number of active connections._
     - [ ] _The number of users using the server._
