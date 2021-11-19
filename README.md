@@ -769,9 +769,11 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
   
       >The [top](https://man7.org/linux/man-pages/man1/top.1.html) program provides a dynamic real-time view of a running system.  It can display system summary information as well as a list of processes or threads currently being managed by the Linux kernel.
   
-      `top -n1 | grep "%Cpu" | awk '{printf("CPU load: %.1f%%\n", 100.0-$8)}'`
+      >-n : Number-of-iterations limit as: -n number
+      >- Specifies the maximum number of iterations, or frames, top should produce before ending.
   
-      >Line 2 shows CPU state percentages based on the interval since the last refresh.
+      `top -n1 | grep "%Cpu" | awk '{printf("CPU load: %.1f%%\n", (100.0-$8)%100)}'`
+  
     - [ ] _The date and time of the last reboot._
     - [ ] _Whether LVM is active or not._
     - [ ] _The number of active connections._
