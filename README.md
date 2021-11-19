@@ -765,7 +765,13 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
   
       ![image](https://user-images.githubusercontent.com/60623613/142290244-38e413e7-dc73-45a6-9cf3-e7fb19832e6f.png)
 
-    - [ ] _The current utilization rate of your processors as a percentage._
+    - [x] _The current utilization rate of your processors as a percentage._
+  
+      >The [top](https://man7.org/linux/man-pages/man1/top.1.html) program provides a dynamic real-time view of a running system.  It can display system summary information as well as a list of processes or threads currently being managed by the Linux kernel.
+  
+      `top -n1 | grep "%Cpu" | awk '{printf("CPU load: %.1f%%\n", 100.0-$8)}'`
+  
+      >Line 2 shows CPU state percentages based on the interval since the last refresh.
     - [ ] _The date and time of the last reboot._
     - [ ] _Whether LVM is active or not._
     - [ ] _The number of active connections._
