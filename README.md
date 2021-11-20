@@ -780,7 +780,12 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
   
       ![image](https://user-images.githubusercontent.com/60623613/142692434-e5a72686-48d8-4ae3-883a-578e0a7d273a.png)
       
-    - [ ] _Whether LVM is active or not._
+    - [x] _Whether LVM is active or not._
+  
+      `if [ $(lsblk | grep "lvm" | wc -l) -eq 0 ]; then echo "no"; else echo "yes"; fi`
+  
+      ![image](https://user-images.githubusercontent.com/60623613/142705580-3dba1b72-017c-4431-88a6-941439954807.png)
+
     - [ ] _The number of active connections._
     - [ ] _The number of users using the server._
     - [ ] _The IPv4 address of your server and its MAC (Media Access Control) address._
