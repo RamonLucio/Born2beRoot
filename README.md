@@ -794,8 +794,19 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
         
         > - Print summary statistics. This option does not parse socket lists obtaining summary from various sources. It is useful when amount of sockets is so huge that parsing /proc/net/tcp is painful.
   
-      ![image](https://user-images.githubusercontent.com/60623613/142727761-bcb3a604-f73d-4c35-a398-c18e2d98c4fb.png)
+      `ss -s | grep "TCP:" | tr ',' ' ' | awk '{printf("Connections TCP : %s ESTABLISHED\n", $4)}'`
   
-    - [ ] _The number of users using the server._
+      ![image](https://user-images.githubusercontent.com/60623613/142728665-d72dfb48-8256-49bb-8a19-e7fcd9e5e773.png)
+  
+    - [x] _The number of users using the server._
+  
+      > `who --count`
+      
+        >all login names and number of users logged on
+  
+      `who --count | grep "users" | tr '=' ' ' | awk '{printf("User log: %s\n", $3)}'`
+          
+      ![image](https://user-images.githubusercontent.com/60623613/142728930-c18503c3-3037-4efa-a387-84758cc32f67.png)
+      
     - [ ] _The IPv4 address of your server and its MAC (Media Access Control) address._
     - [ ] _The number of commands executed with the sudo program._
