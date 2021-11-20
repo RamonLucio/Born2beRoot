@@ -786,7 +786,16 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
   
       ![image](https://user-images.githubusercontent.com/60623613/142705580-3dba1b72-017c-4431-88a6-941439954807.png)
 
-    - [ ] _The number of active connections._
+    - [x] _The number of active connections._
+  
+      >[ss](https://man7.org/linux/man-pages/man8/ss.8.html) is used to dump socket statistics. It allows showing information similar to netstat.  It can display more TCP and state information than other tools.
+  
+      > -s, --summary
+        
+        > - Print summary statistics. This option does not parse socket lists obtaining summary from various sources. It is useful when amount of sockets is so huge that parsing /proc/net/tcp is painful.
+  
+      ![image](https://user-images.githubusercontent.com/60623613/142727761-bcb3a604-f73d-4c35-a398-c18e2d98c4fb.png)
+  
     - [ ] _The number of users using the server._
     - [ ] _The IPv4 address of your server and its MAC (Media Access Control) address._
     - [ ] _The number of commands executed with the sudo program._
