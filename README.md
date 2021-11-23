@@ -708,6 +708,12 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
 
 - [ ] _Finally, you have to create a simple script called monitoring.sh. It must be developed in bash._
   
+### [How to create a bash script?](https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_02_01.html)
+  
+  >A shell script is a sequence of commands for which you have a repeated use. This sequence is typically executed by entering the name of the script on the command line. Alternatively, you can use scripts to automate tasks using the **cron** facility
+  
+  >To create a shell script, open a new empty file in your editor. You might want to chose a more advanced editor like vim or emacs, however, because these can be configured to recognize shell and Bash syntax and can be a great help in preventing those errors that beginners frequently make, such as forgetting brackets and semi-colons.
+
 - [ ] _At server startup, the script will display some information (listed below) on all terminals every 10 minutes (take a look at wall). The banner is optional. No error must be visible._
   
   _Your script must always be able to display the following information:_
