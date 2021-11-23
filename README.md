@@ -668,9 +668,17 @@ at least 7 characters that are not part of the former password._
   
 ### [How to create a group?](https://linux.die.net/man/8/groupadd)
   
->The groupadd command creates a new group account using the values specified on the command line plus the default values from the system. The new group will be entered into the system files as needed.
+>The `groupadd` command creates a new group account using the values specified on the command line plus the default values from the system. The new group will be entered into the system files as needed.
   
 ![image](https://user-images.githubusercontent.com/60623613/143143721-4a96196c-b07d-4599-ba8f-6b5c342f9e77.png)
+  
+ℹ️ **INFO**: _During the defense, you will have to create a new user and assign it to a group._
+  
+### [How to create a new user?](https://linux.die.net/man/8/useradd)
+  
+>`useradd` - create a new user or update default new user information
+
+![image](https://user-images.githubusercontent.com/60623613/143146327-b4c57854-ccfc-43c9-8705-0e58b730fc82.png)
   
 _To set up a strong **configuration for your sudo group**, you have to comply with the following requirements:_
   
