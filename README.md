@@ -359,8 +359,8 @@ possible to connect using SSH as root**._
 ### [What is firewall?](https://en.wikipedia.org/wiki/Firewall_(computing))
 >A firewall is a network security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules. A firewall typically establishes a barrier between a trusted network and an untrusted network, such as the Internet.
   
-### What is UFW?
->The [Uncomplicated Firewall](https://wiki.debian.org/Uncomplicated%20Firewall%20%28ufw%29) is a frontend for iptables and is particularly well-suited for host-based firewalls. UFW provides a framework for managing netfilter, as well as a command-line interface for manipulating the firewall.
+### [What is UFW?](https://wiki.debian.org/Uncomplicated%20Firewall%20%28ufw%29)
+>The Uncomplicated Firewall is a frontend for iptables and is particularly well-suited for host-based firewalls. UFW provides a framework for managing netfilter, as well as a command-line interface for manipulating the firewall.
   
 ### [How to configure Debian with UFW](https://wiki.debian.org/Uncomplicated%20Firewall%20%28ufw%29)?
 >Uncomplicated Firewall can be easily installed by typing this command into the terminal as a super user:
@@ -440,12 +440,12 @@ hostname file and communicated to the Linux kernel by initialization scripts thr
 hostname command. The current value is available in a virtual filesystem, and you can get it
 with the cat /proc/sys/kernel/hostname command.
   
-- [ ] _You have to implement a strong **password policy**._
+- [x] _You have to implement a strong **password policy**._
   
 ### [Password Policy: The Good, The Bad, and The Ugly](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Password+Policy%3A+The+Good%2C+The+Bad%2C+and+The+Ugly&btnG=)
 
 #### Introduction
-  > In today’s world of increasing dependence on computers and computer systems, it is
+>In today’s world of increasing dependence on computers and computer systems, it is
 imperative that we be able to rely on secure and confidential connections to the computers.
 Traditionally, this has been by authentication with usernames and passwords. “A password is
 information associated with an entity that confirms the entity’s identity.” [Bishop] The
@@ -456,7 +456,7 @@ phrases. The goal of a password is to authenticate a user. It is a piece of info
 user knows. If someone can guess a user’s password, she can impersonate the user.
 
 #### The Bad
-> In early versions of UNIX, passwords were stored in a file /etc/passwd. This file was
+>In early versions of UNIX, passwords were stored in a file /etc/passwd. This file was
 available to anyone who had an account on the computer. The passwords were stored in
 encrypted form as 11 characters with a 2-character salt. UNIX uses one-way hash algorithm
 (Crypt) to disguise the passwords. It was very easy to copy to a file and use a cracker
@@ -661,9 +661,17 @@ at least 7 characters that are not part of the former password._
   >![image](https://user-images.githubusercontent.com/60623613/141374362-725be6d5-ab2e-4ba1-9a64-0dabd1f227dc.png)
 
 >After being added to a new group **the user must log out and then log back in again for the new group to take effect**. Groups are only assigned to users at login time. A most common source of confusion is that people add themselves to a new group but then do not log out and back in again and then have problems because the group is not assigned; be sure to verify group membership.
-  
+    
   >![image](https://user-images.githubusercontent.com/60623613/141374485-ac5cb64c-35ba-4dc1-9425-b2c64622ab28.png)
 
+- [x] _A user with your login as username has to belong to the user42 and sudo groups._
+  
+### [How to create a group?](https://linux.die.net/man/8/groupadd)
+  
+>The groupadd command creates a new group account using the values specified on the command line plus the default values from the system. The new group will be entered into the system files as needed.
+  
+![image](https://user-images.githubusercontent.com/60623613/143143721-4a96196c-b07d-4599-ba8f-6b5c342f9e77.png)
+  
 _To set up a strong **configuration for your sudo group**, you have to comply with the following requirements:_
   
   ### How to configure sudo group?
@@ -675,6 +683,7 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
   >![image](https://user-images.githubusercontent.com/60623613/141491250-19d9abbe-ea60-46c2-b58b-caa18968a311.png)
 
   #### What is visudo?
+  
   >[visudo](https://linux.die.net/man/8/visudo) edits the sudoers file in a safe fashion. visudo locks the sudoers file against multiple simultaneous edits, provides basic sanity checks, and checks for parse errors. If the sudoers file is currently being edited you will receive a message to try again later.
       
   - [x] _Authentication using sudo has to be limited to 3 attempts in the event of an incorrect password._
