@@ -243,44 +243,46 @@ allows users to interact with electronic devices through graphical icons and aud
 
 _ℹ️ **INFO:** Setting up CentOS is quite complex. Therefore, you don’t have to
 set up KDump. However, SELinux must be running at startup and its
-configuration has to be adapted for the project’s needs. **AppArmor**
-for Debian must be running at startup too._
+configuration has to be adapted for the project’s needs. **AppArmor
+for Debian must be running at startup too**._
 
-### What is AppArmor?
->[AppArmor](https://debian-handbook.info/browse/stable/sect.apparmor.html) is a Mandatory Access Control (MAC) system built on Linux's LSM (Linux Security Modules) interface. In practice, the kernel queries AppArmor before each system call to know whether the process is authorized to do the given operation. Through this mechanism, AppArmor confines programs to a limited set of resources.
+### [What is AppArmor?](https://debian-handbook.info/browse/stable/sect.apparmor.html)
+>AppArmor is a Mandatory Access Control (MAC) system built on Linux's LSM (Linux Security Modules) interface. In practice, the kernel queries AppArmor before each system call to know whether the process is authorized to do the given operation. Through this mechanism, AppArmor confines programs to a limited set of resources.
 
 >AppArmor applies a set of rules (known as “profile”) on each program. The profile applied by the kernel depends on the installation path of the program being executed. Contrary to SELinux, the rules applied do not depend on the user. All users face the same set of rules when they are executing the same program (but traditional user permissions still apply and might result in different behavior!).
 
 >AppArmor profiles are stored in /etc/apparmor.d/ and they contain a list of access control rules on resources that each program can make use of. The profiles are compiled and loaded into the kernel by the apparmor_parser command. Each profile can be loaded either in enforcing or complaining mode. The former enforces the policy and reports violation attempts, while the latter does not enforce the policy but still logs the system calls that would have been denied.
 
->AppArmor support is built into the standard kernels provided by Debian. Enabling AppArmor is thus just a matter of installing some packages by executing apt install apparmor apparmor-profiles apparmor-utils with root privileges.
+>AppArmor support is built into the standard kernels provided by Debian. Enabling AppArmor is thus just a matter of installing some packages by executing `apt install apparmor apparmor-profiles apparmor-utils` with root privileges.
 
-### What is Mandatory Access Control?
->In computer security, [mandatory access control](https://en.wikipedia.org/wiki/Mandatory_access_control) (MAC) refers to a type of access control by which the operating system or database constrains the ability of a subject or initiator to access or generally perform some sort of operation on an object or target. In the case of operating systems, a subject is usually a process or thread; objects are constructs such as files, directories, TCP/UDP ports, shared memory segments, IO devices, etc. Subjects and objects each have a set of security attributes. Whenever a subject attempts to access an object, an authorization rule enforced by the operating system kernel examines these security attributes and decides whether the access can take place. Any operation by any subject on any object is tested against the set of authorization rules (aka policy) to determine if the operation is allowed
+### [What is Mandatory Access Control?](https://en.wikipedia.org/wiki/Mandatory_access_control)
+>In computer security, mandatory access control (MAC) refers to a type of access control by which the operating system or database constrains the ability of a subject or initiator to access or generally perform some sort of operation on an object or target. In the case of operating systems, a subject is usually a process or thread; objects are constructs such as files, directories, TCP/UDP ports, shared memory segments, IO devices, etc. Subjects and objects each have a set of security attributes. Whenever a subject attempts to access an object, an authorization rule enforced by the operating system kernel examines these security attributes and decides whether the access can take place. Any operation by any subject on any object is tested against the set of authorization rules (aka policy) to determine if the operation is allowed
 
-### How to check if AppArmor is running?
->The [`aa-status`](https://gitlab.com/apparmor/apparmor/-/wikis/AppArmorMonitoring#high-level-view) tool gives a high level status of AppArmor and applications it has profiles for (as root).
+### [How to check if AppArmor is running?](https://gitlab.com/apparmor/apparmor/-/wikis/AppArmorMonitoring#high-level-view)
+>The `aa-status` tool gives a high level status of AppArmor and applications it has profiles for (as root).
 
 ![image](https://user-images.githubusercontent.com/60623613/140406297-12047d36-09da-4e33-a19f-98dd45e55b34.png)
 
 _ℹ️ **INFO:** During the defense, you will be asked a few questions about the
-operating system you chose. For instance, you should know the
-differences between **aptitude and apt**, or what SELinux or **AppArmor**
-is. In short, understand what you use!_
+operating system you chose. For instance, **you should know the
+differences between aptitude and apt**, or **what SELinux or AppArmor
+is**. In short, understand what you use!_
 
-### What is APT?
->[APT](https://www.debian.org/doc/manuals/debian-handbook/sect.apt-frontends.en.html#sect.aptitude) is a C++ program whose code mainly resides in the libapt-pkg shared library. APT is a vast project, whose original plans included a graphical interface.
+### [What is APT?](https://debian-handbook.info/browse/stable/apt.html#sect.apt-sources.list)
+>APT is the abbreviation for Advanced Package Tool. What makes this program “advanced” is its approach to packages. It doesn't simply evaluate them individually, but it considers them as a whole and produces the best possible combination of packages depending on what is available and compatible according to dependencies.
 
-### What is apt?
->apt-get is the first front end — command-line based — which was developed within the project. [apt](https://www.debian.org/doc/manuals/debian-handbook/sect.apt-get.en.html) is a second command-line based front end provided by APT which overcomes some design mistakes of apt-get. The default behavior of apt has been improved for interactive use and to actually do what most users expect. The APT developers reserve the right to change the public interface of this tool to further improve it. On the opposite, the public interface of apt-get is well defined and will not change in any backwards incompatible way. It is thus the tool that you want to use when you need to script package installation requests.
+>APT needs to be given a “list of package sources (repositories)”: the file /etc/apt/sources.list will list the different repositories that publish Debian packages. APT will then import the list of packages published by each of these sources.
 
-### What is aptitude?
+### [What is apt?](https://www.debian.org/doc/manuals/debian-handbook/sect.apt-get.en.html)
+>apt-get is the first front end — command-line based — which was developed within the APT project. apt is a second command-line based front end provided by APT which overcomes some design mistakes of apt-get. The default behavior of apt has been improved for interactive use and to actually do what most users expect. The APT developers reserve the right to change the public interface of this tool to further improve it. On the opposite, the public interface of apt-get is well defined and will not change in any backwards incompatible way. It is thus the tool that you want to use when you need to script package installation requests.
+
+### [What is aptitude?](https://www.debian.org/doc/manuals/debian-handbook/sect.after-first-boot.en.html)
 >[aptitude](https://www.debian.org/doc/manuals/aptitude/pr01s01.en.html) is a featureful package manager for Debian GNU/Linux systems, based on the renowned apt package management infrastructure. aptitude provides the functionality of dselect and apt-get, as well as many additional features not found in either program.
 
->[Aptitude](https://www.debian.org/doc/manuals/debian-handbook/sect.after-first-boot.en.html) is an interface to **APT** that can be used in semi-graphical mode on the console. It allows the user to browse the list of available packages according to various categories (installed or not-installed packages, by task, by section, etc.), and to view all of the information available on each of them (dependencies, conflicts, description, etc.). Each package can be marked “install” (to be installed, + key) or “remove” (to be removed, - key). All of these operations will be conducted simultaneously once you've confirmed them by pressing the g key (“g” for “go!”). If you have forgotten some programs, no worries; you will be able to run aptitude again once the initial installation has been completed.
+>aptitude is an interface to APT that can be used in semi-graphical mode on the console. It allows the user to browse the list of available packages according to various categories (installed or not-installed packages, by task, by section, etc.), and to view all of the information available on each of them (dependencies, conflicts, description, etc.). Each package can be marked “install” (to be installed, + key) or “remove” (to be removed, - key). All of these operations will be conducted simultaneously once you've confirmed them by pressing the g key (“g” for “go!”). If you have forgotten some programs, no worries; you will be able to run aptitude again once the initial installation has been completed.
 
-### What is a package manager?
->A [package manager](https://www.debian.org/doc/manuals/aptitude/pr01s02.en.html) keeps track of what software is installed on your computer, and allows you to easily install new software, upgrade software to newer versions, or remove software that you previously installed. As the name suggests, package managers deal with packages: collections of files that are bundled together and can be installed and removed as a group.
+### [What is a package manager?](https://www.debian.org/doc/manuals/aptitude/pr01s02.en.html)
+>A package manager keeps track of what software is installed on your computer, and allows you to easily install new software, upgrade software to newer versions, or remove software that you previously installed. As the name suggests, package managers deal with packages: collections of files that are bundled together and can be installed and removed as a group.
 
 - [ ] _A **SSH service will be running** on **port 4242** only. For security reasons, **it must not be
 possible to connect using SSH as root**._
