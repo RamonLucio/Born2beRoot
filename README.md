@@ -227,9 +227,9 @@ _⚠️ **WARNING:** Since it is a matter of setting up a server, you will insta
 minimum of services. For this reason, a **graphical interface** is of no
 use here. It is therefore forbidden to install X.org or any other
 equivalent graphics server. Otherwise, your grade will be 0._
-### What is a graphical interface?
->The [graphical user interface](https://en.wikipedia.org/wiki/Graphical_user_interface) (GUI) 
-allows users to interact with electronic devices through graphical icons and audio indicator such as primary notation, instead of text-based user interfaces, typed command labels or text navigation.
+
+### [What is a graphical interface?](https://en.wikipedia.org/wiki/Graphical_user_interface)
+>The graphical user interface (GUI) allows users to interact with electronic devices through graphical icons and audio indicator such as primary notation, instead of text-based user interfaces, typed command labels or text navigation.
 
 >![image](https://user-images.githubusercontent.com/60623613/140555452-ed195323-bcd3-433c-96e0-b112dfc01bf8.png)
 
@@ -287,16 +287,18 @@ is**. In short, understand what you use!_
 - [ ] _A **SSH service will be running** on **port 4242** only. For security reasons, **it must not be
 possible to connect using SSH as root**._
 
-### What is SSH?
->Secure Shell ([SSH](https://en.wikipedia.org/wiki/Secure_Shell)) is a cryptographic network protocol for operating network services securely over an unsecured network. SSH provides a secure channel over an unsecured network by using a client–server architecture, connecting an SSH client application with an SSH server. 
+### [What is SSH?](https://en.wikipedia.org/wiki/Secure_Shell)
+>Secure Shell SSH is a cryptographic network protocol for operating network services securely over an unsecured network. SSH provides a secure channel over an unsecured network by using a client–server architecture, connecting an SSH client application with an SSH server. 
 
 >The SSH client drives the connection setup process and uses public key cryptography to verify the identity of the SSH server. After the setup phase the [SSH protocol](https://www.ssh.com/academy/ssh/protocol) uses strong symmetric encryption and hashing algorithms to ensure the privacy and integrity of the data that is exchanged between the client and server.
 
 >The figure below presents a simplified setup flow of a secure shell connection.
+
 >![image](https://user-images.githubusercontent.com/60623613/140618919-8617389f-2f37-4b9b-8ec3-64fc6c3447e9.png)
 
-### How to know if a service is running?
->When you [boot](https://debian-handbook.info/browse/stable/unix-services.html#sect.system-boot) the computer, first, the BIOS takes control of the computer, detects the disks, loads the Master Boot Record, and executes the bootloader. The bootloader takes over, finds the kernel on the disk, loads and executes it. The kernel is then initialized, and starts to search for and mount the partition containing the root filesystem, and finally executes the first program — init.  Frequently, this “root partition” and this init are, in fact, located in a virtual filesystem that only exists in RAM (hence its name, “initramfs”, formerly called “initrd” for “initialization RAM disk”). This filesystem is loaded in memory by the bootloader, often from a file on a hard drive or from the network. It contains the bare minimum required by the kernel to load the “true” root filesystem: this may be driver modules for the hard drive, or other devices without which the system cannot boot, or, more frequently, initialization scripts and modules for assembling RAID arrays, opening encrypted partitions, activating LVM volumes, etc. Once the root partition is mounted, the initramfs hands over control to the real init, and the machine goes back to the standard boot process. The “real init” is currently provided by systemd.
+### [How to know if a service is running?](https://debian-handbook.info/browse/stable/unix-services.html#sect.system-boot)
+
+>When you boot the computer, first, the BIOS takes control of the computer, detects the disks, loads the Master Boot Record, and executes the bootloader. The bootloader takes over, finds the kernel on the disk, loads and executes it. The kernel is then initialized, and starts to search for and mount the partition containing the root filesystem, and finally executes the first program — init.  Frequently, this “root partition” and this init are, in fact, located in a virtual filesystem that only exists in RAM (hence its name, “initramfs”, formerly called “initrd” for “initialization RAM disk”). This filesystem is loaded in memory by the bootloader, often from a file on a hard drive or from the network. It contains the bare minimum required by the kernel to load the “true” root filesystem: this may be driver modules for the hard drive, or other devices without which the system cannot boot, or, more frequently, initialization scripts and modules for assembling RAID arrays, opening encrypted partitions, activating LVM volumes, etc. Once the root partition is mounted, the initramfs hands over control to the real init, and the machine goes back to the standard boot process. The “real init” is currently provided by systemd.
 
 >![image](https://user-images.githubusercontent.com/60623613/140621013-0d898c30-33e7-4207-b62c-4c87d1e0db80.png)
 
@@ -308,10 +310,11 @@ possible to connect using SSH as root**._
 
 >![image](https://user-images.githubusercontent.com/60623613/140622396-4c5b14cc-5311-4427-8159-dc93e6cdd8c4.png)
 
-### How to change the SSH port in the server?
->By default, the SSH server still runs in [port 22](https://www.ssh.com/academy/ssh/port). However, there are occasions when it is run in a different port. Testing use is one reason. Running multiple configurations on the same host is another. Rarely, it may also be run without root privileges, in which case it must be run in a non-privileged port (i.e., port number >= 1024). 
+### [How to change the SSH port in the server?](https://www.ssh.com/academy/ssh/port)
 
->The port number can be configured by changing the Port 22 directive in `/etc/ssh/sshd_config`. It can also be specified using the -p <port> option to sshd. The SSH client and sftp programs also support the -p <port> option. This for a simple reason, there is a large number of robots on the internet that scan ports 22 of all public IPs to find an SSH server to use, by [changing the default port of your SSH service](https://www.it-connect.fr/chapitres/openssh-configuration-du-serveur-ssh/), you will protect yourself from a large number of robots that automate scans and attacks.
+>By default, the SSH server still runs in port 22. However, there are occasions when it is run in a different port. Testing use is one reason. Running multiple configurations on the same host is another. Rarely, it may also be run without root privileges, in which case it must be run in a non-privileged port (i.e., port number >= 1024).
+
+>The port number can be configured by changing the Port 22 directive in `/etc/ssh/sshd_config`. It can also be specified using the -p <port> option to sshd. The SSH client and sftp programs also support the -p <port> option. This for a simple reason, there is a large number of robots on the internet that scan ports 22 of all public IPs to find an SSH server to use, by changing the default port of your SSH service, [you will protect yourself from a large number of robots that automate scans and attacks](https://www.it-connect.fr/chapitres/openssh-configuration-du-serveur-ssh/).
   
 >`apt install vim`
   
@@ -336,38 +339,39 @@ possible to connect using SSH as root**._
 >![image](https://user-images.githubusercontent.com/60623613/140971829-5317b061-85a4-4c85-bbf0-154536cec0d0.png)
 
 ### [Why forbid SSH connections from root by default](https://www.it-connect.fr/chapitres/openssh-configuration-du-serveur-ssh/)?
+
 >The SSH service is a very popular service for attackers and hackers, it allows you to have direct control over the server as if you were in the same room as it. It turns out that the SSH service can be vulnerable to Brute Force attacks , which consist in testing, for a given user, a large number of passwords chosen more or less at random, betting on the fact that at the end of 'at a certain point, we will inevitably come across the right one.
   
->The problem being that if the brute force attack is successful on the " root " account, it becomes very dangerous for the attacked server because it ends up entirely in the hands of the hacker. For security reasons, it is therefore forbidden to connect to it as root . If an attacker decides to brute force an SSH access, he must first find the name of a valid user (other than root, which is the only user present on all Linux machines in the world) and if he succeeds then to find a valid login: password combination, it will end up with a limited number of rights on the server. Which is a lesser evil.
+>The problem being that if the brute force attack is successful on the "root" account, it becomes very dangerous for the attacked server because it ends up entirely in the hands of the hacker. For security reasons, it is therefore forbidden to connect to it as root . If an attacker decides to brute force an SSH access, he must first find the name of a valid user (other than root, which is the only user present on all Linux machines in the world) and if he succeeds then to find a valid login: password combination, it will end up with a limited number of rights on the server. Which is a lesser evil.
   
 ### [How to specify whether root can log in using ssh](https://man7.org/linux/man-pages/man5/sshd_config.5.html)?
+
 > `vim etc/sshd/sshd_config`
   
-> Search for PermitRootLogin. It specifies whether root can log in using ssh(1).  The argument must be yes, prohibit-password, forced-commands-only, or no.  The default is prohibit-password. If this option is set to no, root is not allowed to log in.
+>Search for PermitRootLogin. It specifies whether root can log in using ssh.  The argument must be yes, prohibit-password, forced-commands-only, or no.  The default is prohibit-password. If this option is set to no, root is not allowed to log in.
 
 >![image](https://user-images.githubusercontent.com/60623613/140977183-dffa1d79-8d72-4502-982f-6b370b0647c2.png)
 
 > `systemctl restart sshd`
   
-- [x] _You have to configure your operating system with the **UFW firewall** and thus leave only
-port 4242 open._
+- [x] _You have to configure your operating system with the **UFW firewall** and thus leave only port 4242 open._
 
-### What is firewall?
->A [firewall](https://en.wikipedia.org/wiki/Firewall_(computing)) is a network security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules. A firewall typically establishes a barrier between a trusted network and an untrusted network, such as the Internet.
+### [What is firewall?](https://en.wikipedia.org/wiki/Firewall_(computing))
+>A firewall is a network security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules. A firewall typically establishes a barrier between a trusted network and an untrusted network, such as the Internet.
   
 ### What is UFW?
 >The [Uncomplicated Firewall](https://wiki.debian.org/Uncomplicated%20Firewall%20%28ufw%29) is a frontend for iptables and is particularly well-suited for host-based firewalls. UFW provides a framework for managing netfilter, as well as a command-line interface for manipulating the firewall.
   
 ### [How to configure Debian with UFW](https://wiki.debian.org/Uncomplicated%20Firewall%20%28ufw%29)?
-> Uncomplicated Firewall can be easily installed by typing this command into the terminal as a super user:
+>Uncomplicated Firewall can be easily installed by typing this command into the terminal as a super user:
 
->`apt install ufw`
+`apt install ufw`
   
 >![image](https://user-images.githubusercontent.com/60623613/140982199-56b3f6c4-958e-44de-a749-99b29977a49c.png)
 
-> However, simply installing the firewall will not turn it on automatically, nor it will have any rule set by default.
+>However, simply installing the firewall will not turn it on automatically, nor it will have any rule set by default.
   
-> ⚠️ Warning: If you are configuring over SSH, you may wish to allow SSH before enabling the firewall. If your connection gets interrupted before allowing SSH you may be locked out of your system.
+>⚠️ Warning: If you are configuring over SSH, you may wish to allow SSH before enabling the firewall. If your connection gets interrupted before allowing SSH you may be locked out of your system.
 
 > Firstly, the firewall must be enabled by typing:
 
