@@ -635,6 +635,8 @@ at least 7 characters that are not part of the former password._
 
 - [x] _You have to **install and configure sudo** following strict rules_
   
+### How to install sudo?
+  
 `apt install sudo`
   
 ![image](https://user-images.githubusercontent.com/60623613/141348477-9a6c4fc6-435a-4983-aa2d-11fe795149b4.png)
@@ -643,7 +645,7 @@ at least 7 characters that are not part of the former password._
   
 >Sudo (sometimes considered as short for Super-user do) is a program designed to let system administrators allow some users to execute some commands as root (or another user). The basic philosophy is to give as few privileges as possible but still allow people to get their work done. Sudo is also an effective way to log who ran which command and when.
   
-### Why sudo?
+### Why use sudo?
   
 >Using sudo is better (safer) than opening a session as root for a number of reasons, including:
   > - Nobody needs to know the root password (sudo prompts for the current user's password). Extra privileges can be granted to individual users temporarily, and then taken away without the need for a password change.
@@ -731,7 +733,7 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
       
   More info: [Why would I want to require a tty for sudo? What's the security benefit of requiring it?](https://stackoverflow.com/questions/67985925/why-would-i-want-to-require-a-tty-for-sudo-whats-the-security-benefit-of-requi)
   
-    >![image](https://user-images.githubusercontent.com/60623613/141503188-9bc1ea9c-d5f7-4ee8-b5e2-c39271113f4a.png)
+  >![image](https://user-images.githubusercontent.com/60623613/141503188-9bc1ea9c-d5f7-4ee8-b5e2-c39271113f4a.png)
   
   - [x] _For security reasons too, the paths that can be used by sudo must be restricted._
   Example: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
@@ -740,15 +742,12 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
   
     >![image](https://user-images.githubusercontent.com/60623613/141481834-43c17b44-7d24-4e4e-8897-9fef32dfe449.png)
 
-
-- [ ] _Finally, you have to create a simple script called monitoring.sh. It must be developed in bash._
+- [ ] _Finally, **you have to create a simple script** called monitoring.sh. **It must be developed in bash**._
   
 ### [How to create a bash script?](https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_02_01.html)
   
-  >A shell script is a sequence of commands for which you have a repeated use. This sequence is typically executed by entering the name of the script on the command line. Alternatively, you can use scripts to automate tasks using the **cron** facility
+  >A shell script is a sequence of commands for which you have a repeated use. This sequence is typically executed by entering the name of the script on the command line. Alternatively, you can use scripts to automate tasks using the **cron** facility.
   
-  >To create a shell script, open a new empty file in your editor. You might want to chose a more advanced editor like vim or emacs, however, because these can be configured to recognize shell and Bash syntax and can be a great help in preventing those errors that beginners frequently make, such as forgetting brackets and semi-colons.
-
 - [ ] _At server startup, the script will display some information (listed below) on all terminals every 10 minutes (take a look at wall). The banner is optional. No error must be visible._
   
   _Your script must always be able to display the following information:_
