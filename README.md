@@ -637,9 +637,9 @@ at least 7 characters that are not part of the former password._
   
 ![image](https://user-images.githubusercontent.com/60623613/141348477-9a6c4fc6-435a-4983-aa2d-11fe795149b4.png)
 
-### What is sudo?
+### [What is sudo?](https://wiki.debian.org/sudo/) 
   
->[Sudo](https://wiki.debian.org/sudo/) (sometimes considered as short for Super-user do) is a program designed to let system administrators allow some users to execute some commands as root (or another user). The basic philosophy is to give as few privileges as possible but still allow people to get their work done. Sudo is also an effective way to log who ran which command and when.
+>Sudo (sometimes considered as short for Super-user do) is a program designed to let system administrators allow some users to execute some commands as root (or another user). The basic philosophy is to give as few privileges as possible but still allow people to get their work done. Sudo is also an effective way to log who ran which command and when.
   
 ### Why sudo?
   
@@ -687,20 +687,20 @@ at least 7 characters that are not part of the former password._
 >`useradd` - create a new user or update default new user information
 
 ![image](https://user-images.githubusercontent.com/60623613/143146327-b4c57854-ccfc-43c9-8705-0e58b730fc82.png)
+    
+### [How to configure sudo group?](https://manpages.debian.org/bullseye/sudo-ldap/sudoers.5.en.html)
+  
+>The sudoers policy plugin determines a user's sudo privileges. It is the default sudo policy plugin. The policy is driven by the /etc/sudoers file or, optionally in LDAP.
+  
+>![image](https://user-images.githubusercontent.com/60623613/141489375-505810eb-4f68-4b32-9c1f-e5cf4cdfac7f.png)
+  
+>![image](https://user-images.githubusercontent.com/60623613/141491250-19d9abbe-ea60-46c2-b58b-caa18968a311.png)
+
+#### [What is visudo?](https://linux.die.net/man/8/visudo)
+  
+>visudo edits the sudoers file in a safe fashion. visudo locks the sudoers file against multiple simultaneous edits, provides basic sanity checks, and checks for parse errors. If the sudoers file is currently being edited you will receive a message to try again later.
   
 _To set up a strong **configuration for your sudo group**, you have to comply with the following requirements:_
-  
-  ### How to configure sudo group?
-  
-  >The [sudoers](https://manpages.debian.org/bullseye/sudo-ldap/sudoers.5.en.html) policy plugin determines a user's sudo privileges. It is the default sudo policy plugin. The policy is driven by the /etc/sudoers file or, optionally in LDAP.
-  
-  >![image](https://user-images.githubusercontent.com/60623613/141489375-505810eb-4f68-4b32-9c1f-e5cf4cdfac7f.png)
-  
-  >![image](https://user-images.githubusercontent.com/60623613/141491250-19d9abbe-ea60-46c2-b58b-caa18968a311.png)
-
-  #### What is visudo?
-  
-  >[visudo](https://linux.die.net/man/8/visudo) edits the sudoers file in a safe fashion. visudo locks the sudoers file against multiple simultaneous edits, provides basic sanity checks, and checks for parse errors. If the sudoers file is currently being edited you will receive a message to try again later.
       
   - [x] _Authentication using sudo has to be limited to 3 attempts in the event of an incorrect password._
   
@@ -726,7 +726,8 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
   
     >[requiretty](https://manpages.debian.org/bullseye/sudo-ldap/sudoers.5.en.html#SUDOERS_OPTIONS)
       > - If set, sudo will only run when the user is logged in to a real tty. When this flag is set, sudo can only be run from a login session and not via other means such as cron(8) or cgi-bin scripts. This flag is off by default.
-      More info: [Why would I want to require a tty for sudo? What's the security benefit of requiring it?](https://stackoverflow.com/questions/67985925/why-would-i-want-to-require-a-tty-for-sudo-whats-the-security-benefit-of-requi)
+      
+  More info: [Why would I want to require a tty for sudo? What's the security benefit of requiring it?](https://stackoverflow.com/questions/67985925/why-would-i-want-to-require-a-tty-for-sudo-whats-the-security-benefit-of-requi)
   
     >![image](https://user-images.githubusercontent.com/60623613/141503188-9bc1ea9c-d5f7-4ee8-b5e2-c39271113f4a.png)
   
@@ -736,6 +737,7 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
     >Previous versions did not include that line. If you had a locally modified /etc/sudoers (most would) and then upgraded and kept your locally modified version then this required line is now missing. It no longer overrides your PATH when using sudo. This most likely results in PATH not being set properly and not including the system directories. The fix is to merge your local changes into the new package /etc/sudoers file. Or to put your local changes in the new /etc/sudoers.d/ location as a uniquely named file such as /etc/sudoers.d/local-sudoers.
   
     >![image](https://user-images.githubusercontent.com/60623613/141481834-43c17b44-7d24-4e4e-8897-9fef32dfe449.png)
+
 
 - [ ] _Finally, you have to create a simple script called monitoring.sh. It must be developed in bash._
   
