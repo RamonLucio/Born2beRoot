@@ -295,6 +295,8 @@ is**. In short, understand what you use!_
 - [ ] _A **SSH service will be running** on **port 4242** only. For security reasons, **it must not be
 possible to connect using SSH as root**._
 
+ℹ️ **INFO**: _The use of SSH will be tested during the defense by setting up a new account. You must therefore understand how it works._
+
 ### [What is SSH?](https://en.wikipedia.org/wiki/Secure_Shell)
 >Secure Shell SSH is a cryptographic network protocol for operating network services securely over an unsecured network. SSH provides a secure channel over an unsecured network by using a client–server architecture, connecting an SSH client application with an SSH server. 
 
