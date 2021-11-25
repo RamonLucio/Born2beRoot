@@ -743,6 +743,21 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
     >![image](https://user-images.githubusercontent.com/60623613/141481834-43c17b44-7d24-4e4e-8897-9fef32dfe449.png)
 
 - [ ] _Finally, **you have to create a simple script** called monitoring.sh. **It must be developed in bash**._
+
+ℹ️ **INFO**: _During the defense, you will be asked to explain how this script works. **You will also have to interrupt it without modifying it**. **Take a look at cron**._
+  
+### [What is cron?](https://debian-handbook.info/browse/stable/sect.task-scheduling-cron-atd.html)
+  
+>cron is the daemon responsible for executing scheduled and recurring commands (every day,
+every week, etc.). 
+  
+>By default, all users can schedule the execution of tasks. Each user has thus their own crontab
+in which they can record scheduled commands. It can be edited by running `crontab -e` (its
+content is stored in the /var/spool/cron/crontabs/user file).
+
+### [What is crontab?](https://linux.die.net/man/5/crontab)
+
+>A crontab file contains instructions to the cron(8) daemon of the general form: "run this command at this time on this date". Each user has their own crontab, and commands in any given crontab will be executed as the user who owns the crontab.
   
 ### [How to create a bash script?](https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_02_01.html)
   
