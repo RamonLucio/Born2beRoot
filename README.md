@@ -742,7 +742,147 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
   
     >![image](https://user-images.githubusercontent.com/60623613/141481834-43c17b44-7d24-4e4e-8897-9fef32dfe449.png)
 
-- [ ] _Finally, **you have to create a simple script** called monitoring.sh. **It must be developed in bash**._
+<hr>
+  
+- [ ] _Finally, **you have to create a simple script called monitoring.sh. It must be developed in bash**._
+  
+### [What is a script?](https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_02_01.html)
+  
+>A shell script is a sequence of commands for which you have a repeated use. This sequence is typically executed by entering the name of the script on the command line. Alternatively, you can use scripts to automate tasks using the **cron** facility.
+  
+### [How to create a script in bash?](https://www.shellscript.sh/)
+  
+>To create a shell script, open a new empty file in your editor. You might want to chose a more advanced editor like **vim** or emacs, however, because these can be configured to recognize shell and Bash syntax and can be a great help in preventing those errors that beginners frequently make, such as forgetting brackets and semi-colons.
+  
+### Which shell will run the script?
+  
+>When running a script in a subshell, you should define which shell should run the script. The shell type in which you wrote the script might not be the default on your system, so commands you entered might result in errors when executed by the wrong shell.
+  
+>The first line of the script determines the shell to start. The first two characters of the first line should be #!, then follows the path to the shell that should interpret the commands that follow. Blank lines are also considered to be lines, so don't start your script with an empty line.
+  
+>monitoring.sh will start with the line
+  
+>`#!/bin/bash`
+  
+>As noted before, this implies that the Bash executable can be found in /bin.
+  
+>Note that to make a file executable, you must set the eXecutable bit, and for a shell script, the Readable bit must also be set:
+  
+![image](https://user-images.githubusercontent.com/60623613/143475455-2083e297-ba03-4af8-a293-97268272e7bb.png)
+  
+- [ ] _At server startup, the script will display some information (listed below) on all terminals every 10 minutes (**take a look at wall**). The banner is optional. No error must be visible._
+  
+### [What is wall?](https://man7.org/linux/man-pages/man1/wall.1.html)
+  
+>wall displays a message, or the contents of a file, or otherwise
+its standard input, on the terminals of all currently logged in
+users.
+  
+More info: [wall (Unix)](https://en.wikipedia.org/wiki/Wall_(Unix))
+  
+![image](https://user-images.githubusercontent.com/60623613/143479972-ef987ba3-bce4-4f9e-b66c-e64f3951bb8a.png)
+  
+_Your script must always be able to display the following information:_
+
+- [x] _The **architecture** of your operating system and its **kernel version**._
+
+  [`uname --all`](https://linux.die.net/man/1/uname)
+
+  ![image](https://user-images.githubusercontent.com/60623613/142035328-559a05c6-b6d3-46b9-89cf-9d6f5e193507.png)
+
+  More info: [Uname Command in Linux](https://linuxize.com/post/uname-command-in-linux/)
+
+- [x] _The number of physical processors._
+
+  >[To find out how many processors you have](https://www.networkworld.com/article/2715970/counting-processors-on-your-linux-box.html), for example, look through /proc/cpuinfo for lines containing the string "physical id". You can grab this with grep and then pass that information through a couple handy filters like this to get a count:
+
+  `grep "physical id" /proc/cpuinfo | sort | uniq | wc -l`
+
+  ![image](https://user-images.githubusercontent.com/60623613/142243768-d0bb68bd-459e-451c-8906-68083572dca5.png)
+
+  >This tells you how many physical processors are on your system, but doesn't answer questions about how many cores or whether your system is using hyper-threading. Note that any particular physical id may appear in the file more than once, so you want to sort lines that contain that string (e.g., "physical id : 0") to be sure that each gets counted only once.
+
+- [x] _The number of virtual processors._
+
+  >If your processors are multi-core, you need to know how many virtual processors you have. You can count those by looking for lines that start with "processor".
+
+  `grep "^processor" /proc/cpuinfo | wc -l`
+
+  ![image](https://user-images.githubusercontent.com/60623613/142246260-00f204eb-2640-43ae-b90c-ab6408c05c2b.png)
+
+  >You might have more virtual processors than physical processors because your processors are mutli-core, because your processors are hyper-threaded, or both. The way to tell how may cores you have is to look for "cpu cores" in your /proc/cpuinfo file. This line will show up for each virtual processor. If the number of cores shown is less than the number of virtual processors, your system is multi-threading.
+
+- [x] _The current available RAM on your server and its utilization rate as a percentage._
+
+  >[free](https://man7.org/linux/man-pages/man1/free.1.html) displays the total amount of free and used physical and swap memory in the system, as well as the buffers and caches used by the kernel. The information is gathered by parsing /proc/meminfo.
+
+  >--mega Display the amount of memory in megabytes. Implies --si.
+
+  ![image](https://user-images.githubusercontent.com/60623613/142268158-80579178-3eb0-41ae-99d4-6f8ca4ab858d.png)
+
+  `free --mega | grep Mem | awk '{printf("Memory Usage: %i/%iMB (%.2f%%)\n", $3, $2, $3/$2*100}'`
+
+  ![image](https://user-images.githubusercontent.com/60623613/142268803-6aa16303-fe5e-419b-b0c1-96ad95cdf00f.png)
+
+- [x] _The current available memory on your server and its utilization rate as a percentage._
+
+  >[df](https://linux.die.net/man/1/df) displays the amount of disk space available on the file system containing each file name argument. If no file name is given, the space available on all currently mounted file systems is shown.
+
+  >--total
+    > - produce a grand total
+
+  >-h, --human-readable
+    > - print sizes in human readable format (e.g., 1K 234M 2G)
+
+  `df --total --human-readable | grep "total" | awk '{printf("Disk Usage: %s\%s (%.1f%%)\n", $3, $2, $3/2*100)}'`
+
+  ![image](https://user-images.githubusercontent.com/60623613/142290244-38e413e7-dc73-45a6-9cf3-e7fb19832e6f.png)
+
+- [x] _The current utilization rate of your processors as a percentage._
+
+  >The [top](https://man7.org/linux/man-pages/man1/top.1.html) program provides a dynamic real-time view of a running system.  It can display system summary information as well as a list of processes or threads currently being managed by the Linux kernel.
+
+  >-n : Number-of-iterations limit as: -n number
+  >- Specifies the maximum number of iterations, or frames, top should produce before ending.
+
+  `top -n1 | grep "%Cpu" | awk '{printf("CPU load: %.1f%%\n", (100.0-$8)%100)}'`
+
+- [x] _The date and time of the last reboot._
+
+  `who --boot | awk '{printf("Last boot: %s %s", $3, $4)}'`
+
+  ![image](https://user-images.githubusercontent.com/60623613/142692434-e5a72686-48d8-4ae3-883a-578e0a7d273a.png)
+
+- [x] _Whether LVM is active or not._
+
+  `if [ $(lsblk | grep "lvm" | wc -l) -eq 0 ]; then echo "no"; else echo "yes"; fi`
+
+  ![image](https://user-images.githubusercontent.com/60623613/142705580-3dba1b72-017c-4431-88a6-941439954807.png)
+
+- [x] _The number of active connections._
+
+  >[ss](https://man7.org/linux/man-pages/man8/ss.8.html) is used to dump socket statistics. It allows showing information similar to netstat.  It can display more TCP and state information than other tools.
+
+  > -s, --summary
+
+    > - Print summary statistics. This option does not parse socket lists obtaining summary from various sources. It is useful when amount of sockets is so huge that parsing /proc/net/tcp is painful.
+
+  `ss -s | grep "TCP:" | tr ',' ' ' | awk '{printf("Connections TCP : %s ESTABLISHED\n", $4)}'`
+
+  ![image](https://user-images.githubusercontent.com/60623613/142728665-d72dfb48-8256-49bb-8a19-e7fcd9e5e773.png)
+
+- [x] _The number of users using the server._
+
+  > `who --count`
+
+    >all login names and number of users logged on
+
+  `who --count | grep "users" | tr '=' ' ' | awk '{printf("User log: %s\n", $3)}'`
+
+  ![image](https://user-images.githubusercontent.com/60623613/142728930-c18503c3-3037-4efa-a387-84758cc32f67.png)
+
+- [ ] _The IPv4 address of your server and its MAC (Media Access Control) address._
+- [ ] _The number of commands executed with the sudo program._
 
 ℹ️ **INFO**: _During the defense, you will be asked to explain how this script works. **You will also have to interrupt it without modifying it**. **Take a look at cron**._
   
@@ -758,110 +898,3 @@ content is stored in the /var/spool/cron/crontabs/user file).
 ### [What is crontab?](https://linux.die.net/man/5/crontab)
 
 >A crontab file contains instructions to the cron(8) daemon of the general form: "run this command at this time on this date". Each user has their own crontab, and commands in any given crontab will be executed as the user who owns the crontab.
-  
-### [How to create a bash script?](https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_02_01.html)
-  
-  >A shell script is a sequence of commands for which you have a repeated use. This sequence is typically executed by entering the name of the script on the command line. Alternatively, you can use scripts to automate tasks using the **cron** facility.
-  
-- [ ] _At server startup, the script will display some information (listed below) on all terminals every 10 minutes (take a look at wall). The banner is optional. No error must be visible._
-  
-  _Your script must always be able to display the following information:_
-    - [x] _The **architecture** of your operating system and its **kernel version**._
-      
-      [`uname --all`](https://linux.die.net/man/1/uname)
-  
-      ![image](https://user-images.githubusercontent.com/60623613/142035328-559a05c6-b6d3-46b9-89cf-9d6f5e193507.png)
-      
-      More info: [Uname Command in Linux](https://linuxize.com/post/uname-command-in-linux/)
-    
-    - [x] _The number of physical processors._
-  
-      >[To find out how many processors you have](https://www.networkworld.com/article/2715970/counting-processors-on-your-linux-box.html), for example, look through /proc/cpuinfo for lines containing the string "physical id". You can grab this with grep and then pass that information through a couple handy filters like this to get a count:
-      
-      `grep "physical id" /proc/cpuinfo | sort | uniq | wc -l`
-  
-      ![image](https://user-images.githubusercontent.com/60623613/142243768-d0bb68bd-459e-451c-8906-68083572dca5.png)
-
-      >This tells you how many physical processors are on your system, but doesn't answer questions about how many cores or whether your system is using hyper-threading. Note that any particular physical id may appear in the file more than once, so you want to sort lines that contain that string (e.g., "physical id : 0") to be sure that each gets counted only once.
-      
-    - [x] _The number of virtual processors._
-      
-      >If your processors are multi-core, you need to know how many virtual processors you have. You can count those by looking for lines that start with "processor".
-  
-      `grep "^processor" /proc/cpuinfo | wc -l`
-  
-      ![image](https://user-images.githubusercontent.com/60623613/142246260-00f204eb-2640-43ae-b90c-ab6408c05c2b.png)
-  
-      >You might have more virtual processors than physical processors because your processors are mutli-core, because your processors are hyper-threaded, or both. The way to tell how may cores you have is to look for "cpu cores" in your /proc/cpuinfo file. This line will show up for each virtual processor. If the number of cores shown is less than the number of virtual processors, your system is multi-threading.
-  
-    - [x] _The current available RAM on your server and its utilization rate as a percentage._
-  
-      >[free](https://man7.org/linux/man-pages/man1/free.1.html) displays the total amount of free and used physical and swap memory in the system, as well as the buffers and caches used by the kernel. The information is gathered by parsing /proc/meminfo.
-      
-      >--mega Display the amount of memory in megabytes. Implies --si.
-  
-      ![image](https://user-images.githubusercontent.com/60623613/142268158-80579178-3eb0-41ae-99d4-6f8ca4ab858d.png)
-  
-      `free --mega | grep Mem | awk '{printf("Memory Usage: %i/%iMB (%.2f%%)\n", $3, $2, $3/$2*100}'`
-  
-      ![image](https://user-images.githubusercontent.com/60623613/142268803-6aa16303-fe5e-419b-b0c1-96ad95cdf00f.png)
-    
-    - [x] _The current available memory on your server and its utilization rate as a percentage._
-  
-      >[df](https://linux.die.net/man/1/df) displays the amount of disk space available on the file system containing each file name argument. If no file name is given, the space available on all currently mounted file systems is shown.
-      
-      >--total
-        > - produce a grand total
-  
-      >-h, --human-readable
-        > - print sizes in human readable format (e.g., 1K 234M 2G)
-  
-      `df --total --human-readable | grep "total" | awk '{printf("Disk Usage: %s\%s (%.1f%%)\n", $3, $2, $3/2*100)}'`
-  
-      ![image](https://user-images.githubusercontent.com/60623613/142290244-38e413e7-dc73-45a6-9cf3-e7fb19832e6f.png)
-
-    - [x] _The current utilization rate of your processors as a percentage._
-  
-      >The [top](https://man7.org/linux/man-pages/man1/top.1.html) program provides a dynamic real-time view of a running system.  It can display system summary information as well as a list of processes or threads currently being managed by the Linux kernel.
-  
-      >-n : Number-of-iterations limit as: -n number
-      >- Specifies the maximum number of iterations, or frames, top should produce before ending.
-  
-      `top -n1 | grep "%Cpu" | awk '{printf("CPU load: %.1f%%\n", (100.0-$8)%100)}'`
-  
-    - [x] _The date and time of the last reboot._
-  
-      `who --boot | awk '{printf("Last boot: %s %s", $3, $4)}'`
-  
-      ![image](https://user-images.githubusercontent.com/60623613/142692434-e5a72686-48d8-4ae3-883a-578e0a7d273a.png)
-      
-    - [x] _Whether LVM is active or not._
-  
-      `if [ $(lsblk | grep "lvm" | wc -l) -eq 0 ]; then echo "no"; else echo "yes"; fi`
-  
-      ![image](https://user-images.githubusercontent.com/60623613/142705580-3dba1b72-017c-4431-88a6-941439954807.png)
-
-    - [x] _The number of active connections._
-  
-      >[ss](https://man7.org/linux/man-pages/man8/ss.8.html) is used to dump socket statistics. It allows showing information similar to netstat.  It can display more TCP and state information than other tools.
-  
-      > -s, --summary
-        
-        > - Print summary statistics. This option does not parse socket lists obtaining summary from various sources. It is useful when amount of sockets is so huge that parsing /proc/net/tcp is painful.
-  
-      `ss -s | grep "TCP:" | tr ',' ' ' | awk '{printf("Connections TCP : %s ESTABLISHED\n", $4)}'`
-  
-      ![image](https://user-images.githubusercontent.com/60623613/142728665-d72dfb48-8256-49bb-8a19-e7fcd9e5e773.png)
-  
-    - [x] _The number of users using the server._
-  
-      > `who --count`
-      
-        >all login names and number of users logged on
-  
-      `who --count | grep "users" | tr '=' ' ' | awk '{printf("User log: %s\n", $3)}'`
-          
-      ![image](https://user-images.githubusercontent.com/60623613/142728930-c18503c3-3037-4efa-a387-84758cc32f67.png)
-      
-    - [ ] _The IPv4 address of your server and its MAC (Media Access Control) address._
-    - [ ] _The number of commands executed with the sudo program._
