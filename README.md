@@ -881,7 +881,26 @@ _Your script must always be able to display the following information:_
 
   ![image](https://user-images.githubusercontent.com/60623613/142728930-c18503c3-3037-4efa-a387-84758cc32f67.png)
 
-- [ ] _The IPv4 address of your server and its MAC (Media Access Control) address._
+- [x] _The IPv4 address of your server and its MAC (Media Access Control) address._
+
+### [Virtual Networking](https://www.virtualbox.org/manual/ch06.html)
+  
+>- Bridged networking. This is for more advanced networking needs, such as network simulations and running servers in a guest. When enabled, Oracle VM VirtualBox connects to one of your installed network cards and exchanges network packets directly, circumventing your host operating system's network stack.
+  
+### [How to find the IPv4 address of your server?](https://linux.die.net/man/1/hostname)
+  
+>`hostname -I`
+  
+>Hostname is the program that is used to either set or display the current host, domain or node name of the system.  These names are used by many of the networking programs to identify the machine.
+  
+>-I, --all-ip-addresses
+  
+>Display all network addresses of the host. This option enumerates all configured addresses on all network interfaces. **The loopback interface and IPv6 link-local addresses are omitted**. Contrary to option -i, this option does not depend on name resolution. Do not make any assumptions about the order of the output.
+  
+### [How to find the MAC address of your server?](https://linux.die.net/man/8/ip)
+  
+`ip link | grep "ether" | awk '{print($2)}'`
+  
 - [ ] _The number of commands executed with the sudo program._
 
 ℹ️ **INFO**: _During the defense, you will be asked to explain how this script works. **You will also have to interrupt it without modifying it**. **Take a look at cron**._
