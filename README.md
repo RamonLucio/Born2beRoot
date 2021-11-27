@@ -724,7 +724,7 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
   
     >When I/O logging is enabled, sudo will run the command in a pseudo-terminal and log all user input and/or output, depending on which options are enabled. I/O can be logged either to the local machine or to a remote log server. For local logs, I/O is logged to the directory specified by the iolog_dir option (/var/log/sudo-io by default) using a unique session ID that is included in the sudo log line, prefixed with “TSID=”.
   
-    >![image](https://user-images.githubusercontent.com/60623613/141522691-226561e7-5b0b-48cf-9fa2-9548c53b9ab0.png)
+    >![image](https://user-images.githubusercontent.com/60623613/143683138-5ee3bc66-1175-43d2-bdc5-77de5b46e3a8.png)
   
   - [x] _The TTY mode has to be enabled for security reasons._
   
@@ -770,7 +770,7 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
   
 ![image](https://user-images.githubusercontent.com/60623613/143475455-2083e297-ba03-4af8-a293-97268272e7bb.png)
   
-- [ ] _At server startup, the script will display some information (listed below) on all terminals every 10 minutes (**take a look at wall**). The banner is optional. No error must be visible._
+- [x] _At server startup, the script will display some information (listed below) on all terminals every 10 minutes (**take a look at wall**). The banner is optional. No error must be visible._
   
 ### [What is wall?](https://man7.org/linux/man-pages/man1/wall.1.html)
   
@@ -883,25 +883,33 @@ _Your script must always be able to display the following information:_
 
 - [x] _The IPv4 address of your server and its MAC (Media Access Control) address._
 
-### [Virtual Networking](https://www.virtualbox.org/manual/ch06.html)
+  ### [Virtual Networking](https://www.virtualbox.org/manual/ch06.html)
   
->- Bridged networking. This is for more advanced networking needs, such as network simulations and running servers in a guest. When enabled, Oracle VM VirtualBox connects to one of your installed network cards and exchanges network packets directly, circumventing your host operating system's network stack.
+  >- Bridged networking. This is for more advanced networking needs, such as network simulations and running servers in a guest. When enabled, Oracle VM VirtualBox connects to one of your installed network cards and exchanges network packets directly, circumventing your host operating system's network stack.
   
-### [How to find the IPv4 address of your server?](https://linux.die.net/man/1/hostname)
+  ### [How to find the IPv4 address of your server?](https://linux.die.net/man/1/hostname)
   
->`hostname -I`
+  >`hostname -I`
   
->Hostname is the program that is used to either set or display the current host, domain or node name of the system.  These names are used by many of the networking programs to identify the machine.
+  >Hostname is the program that is used to either set or display the current host, domain or node name of the system.  These names are used by many of the networking programs to identify the machine.
   
->-I, --all-ip-addresses
+  >-I, --all-ip-addresses
   
->Display all network addresses of the host. This option enumerates all configured addresses on all network interfaces. **The loopback interface and IPv6 link-local addresses are omitted**. Contrary to option -i, this option does not depend on name resolution. Do not make any assumptions about the order of the output.
+  >Display all network addresses of the host. This option enumerates all configured addresses on all network interfaces. **The loopback interface and IPv6 link-local addresses are omitted**. Contrary to option -i, this option does not depend on name resolution. Do not make any assumptions about the order of the output.
   
-### [How to find the MAC address of your server?](https://linux.die.net/man/8/ip)
+  ### [How to find the MAC address of your server?](https://linux.die.net/man/8/ip)
   
-`ip link | grep "ether" | awk '{print($2)}'`
+    `ip link | grep "ether" | awk '{print($2)}'`
   
-- [ ] _The number of commands executed with the sudo program._
+- [x] _The number of commands executed with the sudo program._
+  
+  `sudo ls var/log/sudo/00/00 | wc -l`
+  
+  ![image](https://user-images.githubusercontent.com/60623613/143683681-67835b30-3f88-4e37-9d58-d44a68917720.png)
+  
+_This is an example of how the script is expected to work:_
+  
+![image](https://user-images.githubusercontent.com/60623613/143685573-9cea8162-ec76-43f4-bbc0-e5832727e99a.png)
 
 ℹ️ **INFO**: _During the defense, you will be asked to explain how this script works. **You will also have to interrupt it without modifying it**. **Take a look at cron**._
   
