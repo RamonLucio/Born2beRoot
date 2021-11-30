@@ -744,7 +744,7 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
 
 <hr>
   
-- [ ] _Finally, **you have to create a simple script called monitoring.sh. It must be developed in bash**._
+- [x] _Finally, **you have to create a simple script called monitoring.sh. It must be developed in bash**._
   
 ### [What is a script?](https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_02_01.html)
   
@@ -770,7 +770,7 @@ _To set up a strong **configuration for your sudo group**, you have to comply wi
   
 ![image](https://user-images.githubusercontent.com/60623613/143475455-2083e297-ba03-4af8-a293-97268272e7bb.png)
   
-- [x] _At server startup, the script will display some information (listed below) on all terminals every 10 minutes (**take a look at wall**). The banner is optional. No error must be visible._
+- [x] _**At server startup, the script will display some information (listed below) on all terminals every 10 minutes (take a look at wall)**. The banner is optional. No error must be visible._
   
 ### [What is wall?](https://man7.org/linux/man-pages/man1/wall.1.html)
   
@@ -915,8 +915,7 @@ _This is an example of how the script is expected to work:_
   
 ### [What is cron?](https://debian-handbook.info/browse/stable/sect.task-scheduling-cron-atd.html)
   
->cron is the daemon responsible for executing scheduled and recurring commands (every day,
-every week, etc.). 
+>cron is the [daemon](https://en.wikipedia.org/wiki/Daemon_(computing)) responsible for executing scheduled and recurring commands (every day, every week, etc.). 
   
 >By default, all users can schedule the execution of tasks. Each user has thus their own crontab
 in which they can record scheduled commands. It can be edited by running `crontab -e` (its
@@ -925,3 +924,17 @@ content is stored in the /var/spool/cron/crontabs/user file).
 ### [What is crontab?](https://linux.die.net/man/5/crontab)
 
 >A crontab file contains instructions to the cron(8) daemon of the general form: "run this command at this time on this date". Each user has their own crontab, and commands in any given crontab will be executed as the user who owns the crontab.
+
+### [How to display some information on all terminals every 10 minutes?](https://www.cyberciti.biz/faq/crontab-every-10-min/)
+  
+>To get crontab to run a task every 10 minutes you could type as follow:
+
+  >`*/10 * * * * /path/to/script`
+  
+>The */10 is used in conjunction with ranges. For example, 0-23/2 can be used in the hours field to specify command execution every other hour. Steps are also permitted after an asterisk, so if you want to say every two hours just use */2. In this example, */10 in the minutes field to specify command execution every 10 minutes.
+  
+![image](https://user-images.githubusercontent.com/60623613/144088241-0a2c0131-d4d0-40fd-9d8f-a5061c1bb259.png)
+  
+### [How to interrupt the script without modifying it?](https://www.debian.org/doc/manuals/debian-handbook/sect.task-scheduling-cron-atd.en.html)
+  
+>To cancel a task scheduled by cron, simply run crontab -e and delete the corresponding line in the crontab file.
