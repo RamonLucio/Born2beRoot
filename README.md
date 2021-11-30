@@ -61,23 +61,8 @@ your own operating system while implementing strict rules._
 _The use of VirtualBox (or UTM if you can’t use VirtualBox) is mandatory._
 
 - [ ] _You only have to turn in a signature.txt file at the root of your repository. You
-must paste in it the **signature** of your machine’s virtual disk._
->To get this signature, you first have to open the default installation folder
-(it is the folder where your VMs are saved):
->- Windows: %HOMEDRIVE%%HOMEPATH%\VirtualBox VMs\
->- Linux: ~/VirtualBox VMs/
->- MacM1: ~/Library/Containers/com.utmapp.UTM/Data/Documents/
->- MacOS: ~/VirtualBox VMs/
-
->Then, retrieve the signature from the **".vdi"** file (or ".qcow2 for UTM’users) of your
-virtual machine in sha1 format. Below are 4 command examples for a centos_serv.vdi
-file:
->- Windows: certUtil -hashfile centos_serv.vdi sha1
->- Linux: sha1sum centos_serv.vdi
->- For Mac M1: shasum Centos.utm/Images/disk-0.qcow2
->- MacOS: shasum centos_serv.vdi
->This is an example of what kind of output you will get:
->- 6e657c4619944be17df3c31faa030c25e43e40af
+must paste in it the **signature** of your machine’s virtual disk. Go to Submission and
+peer-evaluation for more information._
 
 ### [What is virtual disk signature?](https://www.lifewire.com/what-is-a-disk-signature-2625851) 
 
@@ -938,3 +923,27 @@ content is stored in the /var/spool/cron/crontabs/user file).
 ### [How to interrupt the script without modifying it?](https://www.debian.org/doc/manuals/debian-handbook/sect.task-scheduling-cron-atd.en.html)
   
 >To cancel a task scheduled by cron, simply run crontab -e and delete the corresponding line in the crontab file.
+
+# Submission and peer-evaluation
+  
+>To get the signature, you first have to open the default installation folder
+(it is the folder where your VMs are saved):
+>- Windows: %HOMEDRIVE%%HOMEPATH%\VirtualBox VMs\
+>- Linux: ~/VirtualBox VMs/
+>- MacM1: ~/Library/Containers/com.utmapp.UTM/Data/Documents/
+>- MacOS: ~/VirtualBox VMs/
+
+>Then, retrieve the signature from the **".vdi"** file (or ".qcow2 for UTM’users) of your
+virtual machine in sha1 format. Below are 4 command examples for a centos_serv.vdi
+file:
+>- Windows: certUtil -hashfile centos_serv.vdi sha1
+>- Linux: sha1sum centos_serv.vdi
+>- For Mac M1: shasum Centos.utm/Images/disk-0.qcow2
+>- MacOS: shasum centos_serv.vdi
+>This is an example of what kind of output you will get:
+>- 6e657c4619944be17df3c31faa030c25e43e40af
+  
+ℹ️ **INFO**: _Please note that your virtual machine’s signature may be altered after your first evaluation. **To solve this problem, you can duplicate your virtual machine or use save state**._
+  
+⚠️ **WARNING:** _It is of course FORBIDDEN to turn in your virtual machine in your Git repository. During the defense, the signature of the signature.txt file will be compared with the one of your virtual machine. If the
+two of them are not identical, your grade will be 0._
