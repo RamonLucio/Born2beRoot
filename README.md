@@ -924,7 +924,7 @@ content is stored in the /var/spool/cron/crontabs/user file).
   
 >To cancel a task scheduled by cron, simply run crontab -e and delete the corresponding line in the crontab file.
 
-# Submission and peer-evaluation
+## Submission and peer-evaluation
   
 >To get the signature, you first have to open the default installation folder
 (it is the folder where your VMs are saved):
