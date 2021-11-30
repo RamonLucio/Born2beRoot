@@ -945,5 +945,21 @@ file:
   
 ℹ️ **INFO**: _Please note that your virtual machine’s signature may be altered after your first evaluation. **To solve this problem, you can duplicate your virtual machine or use save state**._
   
+### [How to save state of a virtual machine?](https://www.virtualbox.org/manual/UserManual.html#snapshots)
+  
+>With snapshots, you can save a particular state of a virtual machine for later use. At any later time, you can revert to that state, even though you may have changed the VM considerably since then. A snapshot of a virtual machine is thus similar to a machine in Saved state, but there can be many of them, and these saved states are preserved.
+  
+>To see the snapshots of a virtual machine, click on the machine name in VirtualBox Manager. Then click the List icon next to the machine name, and select Snapshots. Until you take a snapshot of the machine, the list of snapshots will be empty except for the Current State item, which represents the "now" point in the lifetime of the virtual machine.
+  
+>Restore a snapshot. In the list of snapshots, right-click on any snapshot you have taken and select Restore. By restoring a snapshot, you go back or forward in time. The current state of the machine is lost, and the machine is restored to the exact state it was in when the snapshot was taken.
+  
+>Think of a snapshot as a point in time that you have preserved. More formally, a snapshot consists of the following:
+
+  >- The snapshot contains a complete copy of the VM settings, including the hardware configuration, so that when you restore a snapshot, the VM settings are restored as well. For example, if you changed the hard disk configuration or the VM's system settings, that change is undone when you restore the snapshot.
+  
+  >- The complete state of all the virtual disks attached to the machine is preserved. Going back to a snapshot means that all changes that had been made to the machine's disks, file by file and bit by bit, will be undone as well. Files that were since created will disappear, files that were deleted will be restored, changes to files will be reverted.
+  
+![image](https://user-images.githubusercontent.com/60623613/144112142-125c6bb6-dea3-433b-8a55-bb073b84d872.png)
+  
 ⚠️ **WARNING:** _It is of course FORBIDDEN to turn in your virtual machine in your Git repository. During the defense, the signature of the signature.txt file will be compared with the one of your virtual machine. If the
 two of them are not identical, your grade will be 0._
