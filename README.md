@@ -615,7 +615,7 @@ at least 7 characters that are not part of the former password._
   
     >![image](https://user-images.githubusercontent.com/60623613/141306669-2d77c501-551e-4a15-b4e5-a82c0f33a581.png)
     
-    >![image](https://user-images.githubusercontent.com/60623613/141333890-bccf88ca-3663-44b9-9feb-47da5398439f.png)
+    >![image](https://user-images.githubusercontent.com/60623613/144090757-0a0d3e68-7a47-4082-9652-8f0ceb917e3c.png)
 
 ⚠️ **WARNING**: _After setting up your configuration files, you will have to **change all the passwords** of the accounts present on the virtual machine, including the root account._
   
