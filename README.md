@@ -54,13 +54,14 @@ your own operating system while implementing strict rules._
 >When a VM is started for the first time, the First Start Wizard, is displayed. This wizard helps you to select an installation medium. Since the VM is created empty, it would otherwise behave just like a real computer with no OS installed. It will do nothing and display an error message that no bootable OS was found.
 
 >If you have [downloaded](https://www.debian.org/download) installation media from the Internet in the form of an ISO image file such as with a Linux distribution, you would normally burn this file to an empty CD or DVD and proceed as described above. With Oracle VM VirtualBox however, you can skip this step and mount the ISO file directly. Oracle VM VirtualBox will then present this file as a CD or DVD-ROM drive to the virtual machine, much like it does with virtual hard disk images.
+
 >![image](https://user-images.githubusercontent.com/60623613/140512001-c7fc0f10-b80c-4378-a4ba-ac75f27fd57f.png)
 
 ## General guidelines
 
 _The use of VirtualBox (or UTM if you can’t use VirtualBox) is mandatory._
 
-- [ ] _You only have to turn in a signature.txt file at the root of your repository. You
+- [x] _You only have to turn in a signature.txt file at the root of your repository. You
 must paste in it the **signature** of your machine’s virtual disk. Go to Submission and
 peer-evaluation for more information._
 
