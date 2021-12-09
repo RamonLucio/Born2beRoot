@@ -827,11 +827,20 @@ _Your script must always be able to display the following information:_
 - [x] _The current utilization rate of your processors as a percentage._
 
   >The [top](https://man7.org/linux/man-pages/man1/top.1.html) program provides a dynamic real-time view of a running system.  It can display system summary information as well as a list of processes or threads currently being managed by the Linux kernel.
+  
+  >-b : Batch-mode operation
+  >- Starts top in Batch mode, which could be useful for sending
+  output from top to other programs or to a file.  In this
+  mode, top will not accept input and runs until the
+  iterations limit you've set with the `-n' command-line
+  option or until killed.
 
   >-n : Number-of-iterations limit as: -n number
   >- Specifies the maximum number of iterations, or frames, top should produce before ending.
 
-  `top -n1 | grep "%Cpu" | awk '{printf("CPU load: %.1f%%\n", (100.0-$8)%100)}'`
+  `top -bn1 | grep "%Cpu" | awk '{printf("CPU load: %.1f%%\n", (100.0-$8)%100)}'`
+  
+  ![image](https://user-images.githubusercontent.com/60623613/145411951-9395799f-9e42-4540-961f-e1f9f197fd0f.png)
 
 - [x] _The date and time of the last reboot._
 
